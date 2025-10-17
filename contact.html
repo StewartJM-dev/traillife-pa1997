@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Trailhead PA-1997</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="image_7.png" alt="Trail Life Troop PA-1997 Logo">
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section>
+            <h2>Contact Us</h2>
+            
+            <div style="background: #f8f9fa; padding: 2rem; border-radius: 10px; margin-bottom: 3rem; text-align: center;">
+                <h3 style="color: #2c5f2d; margin-bottom: 1.5rem;">Get In Touch</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">We'd love to hear from you! Whether you're interested in joining, volunteering, or just want more information.</p>
+                
+                <div style="margin-top: 2rem;">
+                    <p style="margin-bottom: 0.5rem;"><strong>📞 Phone/Text:</strong> <a href="tel:570-316-7600" style="color: #2c5f2d; font-weight: bold;">570-316-7600</a></p>
+                    <p style="margin-bottom: 0.5rem;"><strong>📧 Email:</strong> <a href="mailto:TLtroopPA1997@yahoo.com" style="color: #2c5f2d; font-weight: bold;">TLtroopPA1997@yahoo.com</a></p>
+                    <p style="margin-top: 1.5rem;"><strong>Contact:</strong> John Stewart (Troop Ministry Liaison)</p>
+                </div>
+            </div>
+            
+            <div class="info-grid" style="margin-bottom: 3rem;">
+                <div class="info-card">
+                    <h3>📍 Where We Meet</h3>
+                    <p><strong>Living Word Baptist Church</strong><br>
+                    40 Hess Lane<br>
+                    Sweet Valley, PA</p>
+                    <p style="margin-top: 1rem;"><strong>When:</strong> Every Tuesday at 6:00 PM</p>
+                </div>
+                <div class="info-card">
+                    <h3>🚗 Visit Us</h3>
+                    <p>You're welcome to visit any Tuesday evening! Just show up at 6:00 PM and introduce yourself. No appointment necessary.</p>
+                    <p style="margin-top: 1rem;">We're located just minutes from Ricketts Glen State Park in beautiful Sweet Valley, PA.</p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3 style="text-align: center; color: #2c5f2d; margin-bottom: 2rem;">Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">I'm interested in:</label>
+                        <select id="interest" name="interest">
+                            <option value="joining">Joining the troop</option>
+                            <option value="volunteering">Volunteering</option>
+                            <option value="info">More information</option>
+                            <option value="newsletter">Newsletter subscription</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit">Send Message</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #2c5f2d 0%, #97d700 100%); border-radius: 10px; color: white; text-align: center;">
+                <h3 style="color: white; margin-bottom: 1rem;">📬 Subscribe to Our Newsletter</h3>
+                <p style="margin-bottom: 1.5rem;">Get weekly updates, event reminders, and photos delivered to your inbox!</p>
+                <a href="index.html#newsletter" style="display: inline-block; background: white; color: #2c5f2d; padding: 1rem 2rem; text-decoration: none; border-radius: 50px; font-weight: bold;">Subscribe Now</a>
+            </div>
+            
+            <div style="margin-top: 3rem; text-align: center; padding: 2rem; background: #fff3cd; border-radius: 10px;">
+                <h3 style="color: #856404; margin-bottom: 1rem;">🌟 Follow Us on Social Media</h3>
+                <p style="margin-bottom: 1rem; color: #856404;">Stay updated with our latest adventures and announcements!</p>
+                <a href="https://www.facebook.com/share/g/19nwSQXx7a/" target="_blank" style="display: inline-block; background: #4267B2; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 50px; font-weight: bold;">📘 Follow on Facebook</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Trail Life Troop PA-1997. All rights reserved.</p>
+        <p>Proudly sponsored by <a href="https://www.lwbcsv.com" target="_blank">Living Word Baptist Church</a></p>
+        <p>Part of <a href="https://www.traillife.org" target="_blank">Trail Life USA</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

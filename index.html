@@ -8,12 +8,10 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="image_0.png">
     
-    <!-- Trail Life Official Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=PT+Serif:ital@0;1&display=swap" rel="stylesheet">
     
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-D1VYMBSYYM"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -23,406 +21,7 @@
     </script>
     
     <title>Trailhead PA-1997 - Trail Life Troop</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-        }
-
-        header {
-            background: url('image_6.jpeg') center center / cover no-repeat;
-            color: white;
-            padding: 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-            min-height: 400px;
-        }
-
-       
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            position: relative;
-            z-index: 1;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-end;
-        }
-
-        .logo-container {
-            width: 250px;
-            height: 250px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-            backdrop-filter: blur(10px);
-        }
-
-        .logo-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .header-text {
-            display: none;
-        }
-
-        nav {
-            background: #1e4620;
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            max-width: 1200px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        nav li {
-            flex: 1;
-            min-width: 100px;
-        }
-
-        nav a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 0.8rem 1rem;
-            text-align: center;
-            transition: background 0.3s;
-            font-size: 0.95rem;
-        }
-
-        nav a:hover {
-            background: #2c5f2d;
-        }
-
-        #installAppBtn {
-            background: #A73638;
-            color: white;
-            padding: 0.8rem 1rem;
-            border: none;
-            font-size: 0.9rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-            font-family: 'Open Sans', sans-serif;
-            border-radius: 5px;
-            width: 100%;
-            display: none;
-        }
-
-        #installAppBtn:hover {
-            background: #8b2b2d;
-            transform: scale(1.05);
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23228B22" width="1200" height="600"/><path fill="%23186418" d="M0 400L50 383C100 367 200 333 300 333C400 333 500 367 600 383C700 400 800 400 900 383C1000 367 1100 333 1150 317L1200 300V600H0Z"/></svg>');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            color: #A73638;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #ff6b35;
-            color: white;
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        h2 {
-            color: #2c5f2d;
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid #97d700;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .info-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-left: 4px solid #2c5f2d;
-            transition: transform 0.3s;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .info-card h3 {
-            color: #2c5f2d;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .info-card p {
-            color: #555;
-            line-height: 1.8;
-        }
-
-        .calendar-event {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            border-left: 4px solid #ff6b35;
-        }
-
-        .calendar-event h3 {
-            color: #2c5f2d;
-            margin-bottom: 0.5rem;
-        }
-
-        .calendar-event .date {
-            color: #ff6b35;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .gallery-item {
-            aspect-ratio: 4/3;
-            background: linear-gradient(135deg, #2c5f2d 0%, #97d700 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-            text-align: center;
-            padding: 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 2rem auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #2c5f2d;
-            font-weight: bold;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #2c5f2d;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        button[type="submit"] {
-            background: #2c5f2d;
-            color: white;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        button[type="submit"]:hover {
-            background: #1e4620;
-        }
-
-        .leadership {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .leader-card {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .leader-photo {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #2c5f2d 0%, #97d700 100%);
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            overflow: hidden;
-        }
-
-        .leader-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .leader-card h3 {
-            color: #2c5f2d;
-            margin-bottom: 0.5rem;
-        }
-
-        .leader-card .role {
-            color: #ff6b35;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        footer {
-            background: #1e4620;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        footer a {
-            color: #97d700;
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                align-items: center;
-                padding: 2rem 1rem;
-            }
-
-            .logo-container {
-                width: 180px;
-                height: 180px;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            nav ul {
-                flex-direction: row;
-                justify-content: center;
-            }
-
-            nav li {
-                flex: 0 0 auto;
-                min-width: auto;
-            }
-
-            nav a {
-                padding: 0.6rem 0.8rem;
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav a {
-                padding: 0.5rem 0.6rem;
-                font-size: 0.8rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -435,527 +34,115 @@
 
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#calendar">Events</a></li>
-            <li><a href="#fundraiser">Fundraiser</a></li>
-            <li><a href="#newsletter">Newsletter</a></li>
-            <li><a href="#knowledge">Knowledge</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#leadership">Leadership</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li style="min-width: 120px;"><button id="installAppBtn">📱 Get App</button></li>
         </ul>
-    </nav><section class="hero" id="home">
+    </nav>
+
+    <section class="hero">
         <h2>Adventure Awaits in Pennsylvania Wilderness!</h2>
         <p>Join us for faith-based outdoor adventures, character development, and lifelong brotherhood</p>
-        <a href="#contact" class="cta-button">Join Our Troop - Tuesdays 6:00 PM</a>
+        <a href="contact.html" class="cta-button">Join Our Troop - Tuesdays 6:00 PM</a>
     </section>
 
     <div class="container">
         <section id="about">
-            <h2>About Our Troop</h2>
+            <h2>Welcome to Troop PA-1997</h2>
             <p style="font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8;">Located in Sweet Valley, PA, just minutes from the beautiful Ricketts Glen State Park and historic Benton, PA. We're blessed to meet in God's country, surrounded by Pennsylvania wilderness perfect for outdoor adventures and skill-building.</p>
             
             <div style="background: linear-gradient(135deg, #2c5f2d 0%, #97d700 100%); color: white; padding: 2.5rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
-                <h3 style="color: white; font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">Our Vision & Mission</h3>
-                
-                <div style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 10px; margin-bottom: 1.5rem; backdrop-filter: blur(10px);">
-                    <h4 style="color: white; font-size: 1.3rem; margin-bottom: 1rem;">🎯 Vision</h4>
-                    <p style="font-size: 1.1rem; line-height: 1.8;">To be the premier national character development organization for young men which produces godly and responsible husbands, fathers, and citizens.</p>
-                </div>
-                
-                <div style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 10px; margin-bottom: 1.5rem; backdrop-filter: blur(10px);">
-                    <h4 style="color: white; font-size: 1.3rem; margin-bottom: 1rem;">⚔️ Mission</h4>
-                    <p style="font-size: 1.1rem; line-height: 1.8;">To guide generations of courageous young men to honor God, lead with integrity, serve others, and experience outdoor adventure.</p>
-                </div>
+                <h3 style="color: white; font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">Our Mission</h3>
                 
                 <div style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 10px; backdrop-filter: blur(10px);">
-                    <h4 style="color: white; font-size: 1.3rem; margin-bottom: 1rem;">📖 Motto: "Walk Worthy"</h4>
-                    <p style="font-size: 1.05rem; line-height: 1.8; font-family: 'PT Serif', serif; font-style: italic;">"...that you may walk worthy of the Lord, fully pleasing Him, being fruitful in every good work and increasing in the knowledge of God..." - Colossians 1:10</p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; text-align: center;">To guide generations of courageous young men to honor God, lead with integrity, serve others, and experience outdoor adventure.</p>
                 </div>
-            </div>
-            
-            <div style="background: white; padding: 2.5rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 6px 12px rgba(0,0,0,0.1); border-left: 6px solid #A73638;">
-                <h3 style="color: #2c5f2d; font-size: 1.8rem; margin-bottom: 1.5rem;">Trail Life USA Oath</h3>
-                <p style="font-size: 1.15rem; line-height: 2; color: #2c3e50; font-weight: 500;">
-                    On my honor, I will do my best<br>
-                    To serve God and my country;<br>
-                    To respect authority;<br>
-                    To be a good steward of creation;<br>
-                    And to treat others as I want to be treated.
-                </p>
-            </div>
-            
-            <div style="background: #f8f9fa; padding: 2rem; border-radius: 10px; margin-bottom: 2rem; text-align: center;">
-                <h3 style="color: #A73638; margin-bottom: 1rem; font-size: 1.5rem;">🚀 Trail Life USA is Growing!</h3>
-                <p style="font-size: 1.2rem; color: #2c5f2d; font-weight: bold;">Over 100 new troops started in just 90 days!</p>
-                <p style="color: #666; margin-top: 0.5rem;">Join over 1,400 churches in all 50 states building godly leaders</p>
             </div>
             
             <div class="info-grid">
                 <div class="info-card">
                     <h3>⛺ Who We Are</h3>
-                    <p>We are a Christ-centered outdoor adventure program for boys in Sweet Valley, PA. Our troop focuses on biblical values, character development, leadership skills, and creating lasting memories through exciting outdoor activities in the beautiful Pennsylvania wilderness.</p>
+                    <p>A Christ-centered outdoor adventure program for boys in Sweet Valley, PA. Our troop focuses on biblical values, character development, leadership skills, and creating lasting memories through exciting outdoor activities.</p>
                 </div>
                 <div class="info-card">
-                    <h3>📍 Meeting Times & Location</h3>
+                    <h3>📍 Meeting Times</h3>
                     <p><strong>When:</strong> Every Tuesday at 6:00 PM<br>
                     <strong>Where:</strong> Living Word Baptist Church<br>
-                    40 Hess Lane, Sweet Valley, PA<br>
-                    <strong>What to Bring to Meetings:</strong><br>
-                    Bible, Trailman Handbook, Water Bottle</p>
+                    40 Hess Lane, Sweet Valley, PA</p>
                 </div>
                 <div class="info-card">
                     <h3>🎯 What We Do</h3>
-                    <p><strong>Real Adventures, Real Skills, Real Character</strong></p>
-                    <p style="margin-top: 0.5rem;">Our troop has built an impressive campsite featuring a commanding 30-foot flagpole where Old Glory flies high. We've conducted solemn flag retirement ceremonies honoring our nation's colors, built and launched model rockets skyward, and conquered trails at both Ricketts Glen and Worlds End State Parks.</p>
-                    <p style="margin-top: 0.5rem;">Around crackling campfires and with cast iron Dutch ovens, we master the art of outdoor cooking. We've constructed a working rope-making machine and are learning essential knots and ropework. At our dedicated campsite, boys test their aim at our archery and BB rifle range, practice hatchet throwing, and engage in pugil stick combat training. Through hands-on first aid instruction and biblical character training, we forge the next generation of American patriots and Christian warriors.</p>
+                    <p>Real adventures including camping, hiking, archery, rifle shooting, rope work, campfire cooking, first aid training, and biblical character development. We've built a 30-foot flagpole, launched model rockets, and conquered trails at Ricketts Glen!</p>
                 </div>
             </div>
         </section>
 
-        <section id="calendar">
-            <h2>Upcoming Events & Calendar</h2>
+        <section id="upcoming">
+            <h2>Upcoming Events</h2>
             
             <div style="background: #f8f9fa; padding: 2rem; border-radius: 10px; margin-bottom: 2rem; text-align: center; border: 3px solid #2c5f2d;">
                 <h3 style="color: #2c5f2d; margin-bottom: 1rem; font-size: 1.5rem;">📆 Weekly Meetings</h3>
                 <p style="font-size: 1.2rem; margin-bottom: 0.5rem;"><strong>Every Tuesday at 6:00 PM</strong></p>
-                <p style="color: #666;">Living Word Baptist Church, 40 Hess Lane, Sweet Valley, PA</p>
+                <p style="color: #666;">Living Word Baptist Church</p>
             </div>
-
-            <h3 style="color: #2c5f2d; margin-bottom: 1.5rem; font-size: 1.8rem;">Special Events & Adventures</h3>
             
             <div class="calendar-event">
                 <div class="date">📅 October 18th, 2025 - 9:00 AM</div>
                 <h3>Falls Trail Hike at Ricketts Glen State Park</h3>
-                <p>Join us for an epic adventure conquering the famous Falls Trail! This challenging hike takes us past 21 stunning waterfalls in one of Pennsylvania's most spectacular state parks. Bring sturdy hiking boots, water, snacks, and your sense of adventure. This is the kind of terrain that builds character and creates memories that last a lifetime!</p>
+                <p>Join us for an epic adventure conquering the famous Falls Trail! This challenging hike takes us past 21 stunning waterfalls.</p>
             </div>
             
             <div class="calendar-event">
                 <div class="date">📅 Coming Soon</div>
                 <h3>Medieval Siege Warfare: Trebuchet Build & Pumpkin Launch</h3>
-                <p>Engineering meets outdoor adventure! Our troop will construct a working trebuchet and launch pumpkins using medieval siege technology. Boys will learn physics, teamwork, and problem-solving while building this impressive machine. Stay tuned for launch day details - this is going to be epic!</p>
+                <p>Engineering meets outdoor adventure! Our troop will construct a working trebuchet and launch pumpkins using medieval siege technology.</p>
             </div>
             
-            <div class="calendar-event">
-                <div class="date">📅 Monthly</div>
-                <h3>Saturday Wilderness Adventures</h3>
-                <p>Monthly Saturday hikes and outdoor activities at Ricketts Glen State Park and surrounding Pennsylvania wilderness areas. Specific dates announced at Tuesday meetings.</p>
-            </div>
-            
-            <div style="background: white; padding: 2rem; margin-top: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;">
-                <p style="font-size: 1.1rem;"><strong>📧 Want the full calendar?</strong></p>
-                <p style="margin-top: 1rem;">Contact John Stewart at <a href="tel:570-316-7600" style="color: #2c5f2d; font-weight: bold;">570-316-7600</a> or <a href="mailto:TLtroopPA1997@yahoo.com" style="color: #2c5f2d; font-weight: bold;">TLtroopPA1997@yahoo.com</a> to receive our monthly event calendar and newsletter!</p>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="events.html" class="cta-button">View Full Calendar</a>
             </div>
         </section>
 
         <section id="fundraiser">
-            <h2>Current Fundraiser</h2>
+            <h2>Support Our Troop</h2>
             <div style="background: linear-gradient(135deg, #A73638 0%, #d94447 100%); padding: 3rem; border-radius: 15px; color: white; box-shadow: 0 6px 12px rgba(0,0,0,0.2);">
                 <div style="text-align: center; margin-bottom: 2rem;">
-                    <h3 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">🎯 Support Our Troop!</h3>
-                    <p style="font-size: 1.3rem; opacity: 0.95;">Help us fund upcoming adventures and activities</p>
+                    <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">🎯 Country Meats Fundraiser</h3>
+                    <p style="font-size: 1.2rem; opacity: 0.95;">Premium quality meat sticks that fuel adventures!</p>
                 </div>
                 
-                <div style="background: white; color: #2c3e50; padding: 2.5rem; border-radius: 10px; max-width: 800px; margin: 0 auto;">
-                    <div style="text-align: center; margin-bottom: 2rem;">
-                       <img src="country-meats-logo.png" alt="Country Meats" style="max-width: 200px; margin-bottom: 1rem;">
-                    </div>
-                    
-                    <h4 style="color: #A73638; font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Support American Values, One Stick at a Time</h4>
-                    <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: #666;">Premium quality meat sticks that fuel adventures and build character!</p>
-                    
-                    <div style="margin: 2rem 0; padding: 1.5rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #2c5f2d;">
-                        <h5 style="color: #2c5f2d; margin-bottom: 1rem;">🛒 Shop Online - Open Year-Round!</h5>
-                        <p style="margin-bottom: 1rem;">Perfect for out-of-state family and friends! Orders ship directly to your door. Every purchase directly supports Troop PA-1997's mission to raise the next generation of American patriots.</p>
-                        <div style="text-align: center; margin-top: 1rem;">
-                            <a href="https://countrymeats.com/pages/seller-profile/trail-life-troop-pa-1997" target="_blank" style="display: inline-block; background: #2c5f2d; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 50px; font-weight: bold; transition: background 0.3s;">Order Online Now</a>
-                        </div>
-                    </div>
-                    
-                    <div style="margin: 2rem 0;">
-                        <h5 style="color: #2c5f2d; margin-bottom: 1rem;">🇺🇸 Your Support Funds Real Adventures:</h5>
-                        <ul style="line-height: 2; color: #555; padding-left: 1.5rem;">
-                            <li>Epic camping expeditions (Ark Encounter, Great Wolf Lodge, Gettysburg battlefields)</li>
-                            <li>Building projects that teach engineering and teamwork</li>
-                            <li>Outdoor skills equipment and campsite improvements</li>
-                            <li>Real-world adventures that forge character and create patriots</li>
-                        </ul>
-                    </div>
-                    
-                    <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: #fff3cd; border-radius: 8px;">
-                        <p style="margin: 0; font-weight: bold; color: #856404;">🏆 Every stick sold brings us closer to raising warriors for Christ and country!</p>
-                    </div>
-                    
-                    <div style="text-align: center; margin-top: 2rem;">
-                        <p style="color: #666;">Questions about the fundraiser?</p>
-                        <a href="#contact" style="display: inline-block; background: #A73638; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 0.5rem; transition: background 0.3s;">Contact Us</a>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 2rem; text-align: center; font-size: 0.95rem; opacity: 0.9;">
-                    <p>All proceeds directly support Troop PA-1997 activities, equipment, and adventures!</p>
-                    <p style="margin-top: 0.5rem;">Questions? Contact Donna Post (Treasurer) through our <a href="#contact" style="color: white; text-decoration: underline;">contact form</a></p>
+                <div style="background: white; color: #2c3e50; padding: 2rem; border-radius: 10px; max-width: 700px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Every purchase directly supports our troop's mission to raise the next generation of American patriots.</p>
+                    <a href="https://countrymeats.com/pages/seller-profile/trail-life-troop-pa-1997" target="_blank" style="display: inline-block; background: #2c5f2d; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 50px; font-weight: bold;">Order Online Now</a>
                 </div>
             </div>
-        </section><section id="newsletter">
-            <h2>Weekly Newsletter</h2>
+        </section>
+
+        <section id="newsletter">
+            <h2>Stay Connected</h2>
             <div style="background: linear-gradient(135deg, #2c5f2d 0%, #97d700 100%); padding: 3rem; border-radius: 15px; color: white; text-align: center; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
-                <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">📬 Stay Connected!</h3>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95;">Get our weekly newsletter with upcoming events, photos, announcements, and troop updates delivered to your inbox every week!</p>
+                <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">📬 Weekly Newsletter</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Get updates, photos, and announcements delivered weekly!</p>
                 
-                <div style="max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 10px;">
+                <div style="max-width: 500px; margin: 0 auto; background: white; padding: 2rem; border-radius: 10px;">
                     <form id="newsletterForm" style="text-align: left;">
                         <div class="form-group">
                             <label for="newsletter-name" style="color: #2c5f2d;">Name *</label>
                             <input type="text" id="newsletter-name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="newsletter-email" style="color: #2c5f2d;">Email Address *</label>
+                            <label for="newsletter-email" style="color: #2c5f2d;">Email *</label>
                             <input type="email" id="newsletter-email" name="email" required>
                         </div>
                         <div style="text-align: center;">
-                            <button type="submit">Subscribe to Newsletter</button>
+                            <button type="submit">Subscribe</button>
                         </div>
                     </form>
-                    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #666; text-align: center;">We respect your privacy. Unsubscribe anytime.</p>
                 </div>
-            </div>
-            
-            <div style="margin-top: 2rem; padding: 2rem; background: #f8f9fa; border-radius: 10px;">
-                <h3 style="color: #2c5f2d; margin-bottom: 1rem;">What's in Our Newsletter?</h3>
-                <div class="info-grid">
-                    <div style="padding: 1rem;">
-                        <h4 style="color: #ff6b35; margin-bottom: 0.5rem;">📅 Event Reminders</h4>
-                        <p>Weekly meeting updates, upcoming campouts, and special activities</p>
-                    </div>
-                    <div style="padding: 1rem;">
-                        <h4 style="color: #ff6b35; margin-bottom: 0.5rem;">📸 Photo Highlights</h4>
-                        <p>Pictures from recent adventures and troop activities</p>
-                    </div>
-                    <div style="padding: 1rem;">
-                        <h4 style="color: #ff6b35; margin-bottom: 0.5rem;">📢 Important Announcements</h4>
-                        <p>Troop news, policy updates, and parent information</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="knowledge">
-            <h2>Knowledge Base & Resources</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8;">Learn more about Trail Life, outdoor skills, advancement, and resources for parents and troop members.</p>
-            
-            <div style="background: linear-gradient(135deg, #1e4620 0%, #2c5f2d 100%); color: white; padding: 3rem; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 6px 12px rgba(0,0,0,0.2);">
-                <h3 style="color: white; font-size: 2.2rem; margin-bottom: 1.5rem; text-align: center;">Why Trail Life USA?</h3>
-                
-                <div style="max-width: 900px; margin: 0 auto;">
-                    <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 10px; margin-bottom: 2rem; backdrop-filter: blur(10px);">
-                        <h4 style="color: #97d700; font-size: 1.5rem; margin-bottom: 1rem;">👨‍👦 Mentoring Boys in a Masculine Program</h4>
-                        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">"We think Trail Life USA is a great way for boys and dads (and boys without dads!) to connect with God through outdoor adventure, and to grow in character and leadership." <em>- Benham Brothers</em></p>
-                        <p style="font-size: 1.05rem; line-height: 1.8;">More than ever, boys need a uniquely masculine program where their assertive, audacious, and adventurous nature is celebrated, not sequestered.</p>
-                    </div>
-                    
-                    <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 10px; margin-bottom: 2rem; backdrop-filter: blur(10px);">
-                        <h4 style="color: #97d700; font-size: 1.5rem; margin-bottom: 1rem;">🏕️ Let Boys Be Boys</h4>
-                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">Too many boys are turning to virtual worlds of television, video games, digital media, and the internet to find realms they can conquer. The result? Apathy, apparent rebellion, or outright resistance to real-world challenge.</p>
-                        <p style="font-size: 1.05rem; line-height: 1.8;"><strong>Trail Life USA is where boys thrive!</strong> Adults are equipped to lead in a structured outdoor environment where boys engage in real-world challenges through camping, hiking, fishing, riflery, archery, canoeing, and hands-on character and leadership development.</p>
-                    </div>
-                    
-                    <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 10px; backdrop-filter: blur(10px);">
-                        <h4 style="color: #97d700; font-size: 1.5rem; margin-bottom: 1rem;">🌲 Real-World Achievement</h4>
-                        <p style="font-size: 1.05rem; line-height: 1.8;">In the outdoors, the experience of adults is never obsolete. Boys find mentors, fathers and sons connect, important relationships are fostered, and boys achieve significant accomplishments that build confidence and character for life.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="background: #fff3cd; padding: 2rem; border-radius: 10px; border-left: 5px solid #ff6b35; margin-bottom: 3rem;">
-                <h3 style="color: #856404; margin-bottom: 1rem; font-size: 1.5rem;">📊 Trail Life USA National Impact</h3>
-                <p style="color: #856404; font-size: 1.1rem; line-height: 1.8;">Trail Life USA partners with churches and parents across America as the premier national character development organization for young men. In over 1,400 churches in all 50 states, fathers and sons are connecting, relationships are deepening, communities are being impacted, and legacies are beginning as a new generation of godly leaders rises up.</p>
-            </div>
-            
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>📖 Trail Life Program Overview</h3>
-                    <p>Learn about the Trail Life mission, values, and program structure. Understand how our Christ-centered outdoor adventures build character and leadership.</p>
-                    <a href="https://www.traillifeusa.com/program-overview" target="_blank" style="color: #2c5f2d; font-weight: bold;">Learn More →</a>
-                </div>
-                <div class="info-card">
-                    <h3>🎯 Advancement & Awards</h3>
-                    <p><strong>Woodlands Trail Program (Ages 5-10)</strong></p>
-                    <p style="margin-top: 0.5rem;">Our youngest warriors earn recognition through the Branch Patch, Forest Award, and Worthy Life Award. Boys earn Branch Pins by completing requirements in seven branches of activities and receive the Forest Award for mastering all branches within their age group (Fox, Hawk, or Mountain Lion).</p>
-                    <p style="margin-top: 0.5rem;"><strong>Highest Honor:</strong> The Timberline Award signifies a Mountain Lion's readiness to advance to the Navigators program, earned after completing the Mountain Lion Forest Award and bridging activities.</p>
-                    <p style="margin-top: 0.5rem;"><strong>Special Recognition:</strong> Sylvan Stars (additional Forest Award achievements), Woodsmen Award (knife safety mastery), and the faith-building Worthy Life Award.</p>
-                    <a href="https://www.traillife.org/advancement/" target="_blank" style="color: #2c5f2d; font-weight: bold; margin-top: 1rem; display: inline-block;">View Full Requirements →</a>
-                    
-                    <div style="margin-top: 1.5rem; padding: 2rem; background: #f4ead5; border-radius: 10px; border: 3px solid #2c5f2d; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                        <h4 style="color: #2c5f2d; font-size: 1.4rem; margin-bottom: 1rem; text-align: center; font-family: 'Open Sans', sans-serif; font-weight: 700;">⚔️ THE WARRIOR'S PATH: NAVIGATORS & ADVENTURERS ⚔️</h4>
-                        <p style="text-align: center; font-size: 1.05rem; margin-bottom: 1.5rem; font-family: 'PT Serif', serif; font-style: italic; color: #1e4620;">"The journey from boy to man isn't marked by age—it's forged through challenge, service, and leadership!"</p>
-                        
-                        <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #97d700; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                            <p style="font-weight: 700; color: #2c5f2d; margin-bottom: 0.8rem; font-size: 1.1rem;">🔥 MASTER THE SKILLS</p>
-                            <p style="font-size: 0.95rem; line-height: 1.7; color: #2c3e50;"><strong>15 Core Trail Badges await your conquest:</strong> From building fires that roar to learning first aid that saves lives, from mastering ropework to cooking meals that fuel adventures. Navigate by stars, honor the flag, survive the wilderness, and emerge as a true outdoorsman. Choose your fitness path—swimming, hiking, cycling, or pure grit!</p>
-                            <p style="font-size: 0.95rem; line-height: 1.7; margin-top: 0.5rem; color: #2c3e50;"><strong>Plus 10+ Elective Badges:</strong> Follow your passion or blaze your own trail—you can even design custom badges for skills YOU want to master!</p>
-                        </div>
-                        
-                        <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #ff6b35; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                            <p style="font-weight: 700; color: #2c5f2d; margin-bottom: 0.8rem; font-size: 1.1rem;">💪 SERVE WITH PURPOSE</p>
-                            <p style="font-size: 0.95rem; line-height: 1.7; color: #2c3e50;"><strong>Navigators:</strong> 15 hours per year making a real difference in your community</p>
-                            <p style="font-size: 0.95rem; line-height: 1.7; color: #2c3e50;"><strong>Adventurers:</strong> 20 hours per year serving others before yourself</p>
-                            <p style="font-size: 0.9rem; margin-top: 0.5rem; font-family: 'PT Serif', serif; font-style: italic; color: #555;">Each Service Star you earn represents hands that helped, hearts that cared, and character that showed up!</p>
-                        </div>
-                        
-                        <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #ffd700; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                            <p style="font-weight: 700; color: #2c5f2d; margin-bottom: 0.8rem; font-size: 1.1rem;">👑 LEAD LIKE A WARRIOR</p>
-                            <p style="font-size: 0.95rem; line-height: 1.7; color: #2c3e50;">Real leaders don't wait to be appointed—they step up! Hold a troop position, plan epic activities, or lead projects that inspire your brothers. Leadership isn't about the title—it's about taking responsibility when others won't!</p>
-                        </div>
-                        
-                        <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #4a90e2; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                            <p style="font-weight: 700; color: #2c5f2d; margin-bottom: 0.8rem; font-size: 1.1rem;">⛺ SHOW UP & STAND OUT</p>
-                            <p style="font-size: 0.95rem; line-height: 1.7; color: #2c3e50;">Warriors don't sit on the sidelines! Active participation in meetings, campouts, and troop adventures isn't just required—it's where the magic happens. Brotherhood is built around campfires, not computer screens!</p>
-                        </div>
-                        
-                        <div style="background: #e8f5e9; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 2px solid #2c5f2d;">
-                            <p style="font-weight: 700; color: #1e4620; margin-bottom: 0.8rem; font-size: 1.1rem; text-align: center;">🎯 THE FINAL CHALLENGE: PROVE YOUR WORTH</p>
-                            <p style="font-size: 0.95rem; line-height: 1.7; text-align: center; color: #2c3e50;">After you've conquered the badges, served your community, led your brothers, and shown up when it counted—you face the Advancement Conference and Board of Review. This is where you demonstrate what you've learned, who you've become, and why you're ready for the next rank. Are you ready to step up?</p>
-                        </div>
-                        
-                        <div style="background: #f4ead5; padding: 2rem; border-radius: 10px; text-align: center; border: 3px solid #2c5f2d; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                            <p style="font-weight: 700; font-size: 1.3rem; margin-bottom: 1.5rem; color: #2c5f2d;">🏆 THE RANKS OF HONOR 🏆</p>
-                            <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 5px solid #97d700; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                                <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: #2c5f2d;">⚔️ ABLE TRAILMAN (Navigator)</p>
-                                <p style="font-size: 0.9rem; color: #2c3e50; line-height: 1.6;">Prove yourself: 4 core badges + 2 electives + 15 service hours = You're ready for more!</p>
-                            </div>
-                            <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 5px solid #ff6b35; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                                <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: #2c5f2d;">🎖️ READY TRAILMAN (Navigator)</p>
-                                <p style="font-size: 0.9rem; color: #2c3e50; line-height: 1.6;">All 9 cores conquered + 5 electives + service + leadership = You're a force to be reckoned with!</p>
-                            </div>
-                            <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #ffd700; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                                <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: #2c5f2d;">🌟 HORIZON AWARD (Adventurer)</p>
-                                <p style="font-size: 0.9rem; color: #2c3e50; line-height: 1.6;">The ultimate challenge: 6 "true freedom" badges + 10 electives + 20 service hours + proven leadership = You've earned your place among legends!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="info-card">
-                    <h3>🏕️ Trail Hacks by The Wild Brothers</h3>
-                    <p><strong>Adventure, Skills, and Faith in Action</strong></p>
-                    <p style="margin-top: 0.5rem;">The Wild Brothers - Morgan, Hudson, Kian, and Asher - grew up as Christian missionaries in the jungles of Indonesia. Raised by their parents Mike and Libby in the wilderness, these four brothers learned firsthand that following Christ is the ultimate adventure.</p>
-                    <p style="margin-top: 0.5rem;">Now partnered with Trail Life USA, they produce the Trail Hacks series - practical outdoor tips and survival skills delivered with a Christian perspective. Their mission aligns perfectly with ours: guiding young men away from digital distractions and into real-world adventure, character development, and leadership.</p>
-                    <div style="margin-top: 1rem;">
-                        <a href="https://www.traillifeusa.com/trailhacks" target="_blank" style="display: inline-block; background: #A73638; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 5px; font-weight: bold; margin-bottom: 0.5rem;">Watch Trail Hacks →</a>
-                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Get inspired with outdoor skills from brothers who lived the adventure</p>
-                    </div>
-                </div>
-                <div class="info-card">
-                    <h3>👨‍👩‍👧‍👦 Parent Resources</h3>
-                    <p>FAQs, parent handbook, what to expect, packing lists, and tips for supporting your son's Trail Life journey.</p>
-                    <a href="#" style="color: #2c5f2d; font-weight: bold;">View Resources</a>
-                </div>
-                <div class="info-card">
-                    <h3>🌐 Trail Life Connect</h3>
-                    <p>Official Trail Life USA online platform for troop management, advancement tracking, communication, and resources.</p>
-                    <a href="https://www.traillifeconnect.com/" target="_blank" style="color: #2c5f2d; font-weight: bold;">Visit Trail Life Connect →</a>
-                </div>
-                <div class="info-card">
-                    <h3>🗺️ Local Adventure Spots</h3>
-                    <p>Guide to Ricketts Glen State Park, nearby trails, camping locations, and outdoor activities in Pennsylvania.</p>
-                    <a href="#" style="color: #2c5f2d; font-weight: bold;">Explore Locations</a>
-                </div>
-            </div>
-            
-            <div style="background: white; padding: 2.5rem; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 6px 12px rgba(0,0,0,0.1);">
-                <h3 style="color: #2c5f2d; font-size: 2rem; margin-bottom: 2rem; text-align: center;">What Sets Trail Life USA Apart</h3>
-                
-                <div style="display: grid; gap: 1.5rem;">
-                    <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #A73638;">
-                        <h4 style="color: #2c5f2d; margin-bottom: 0.5rem;">✝️ Unapologetically Christian</h4>
-                        <p style="color: #555;">The Bible as the foundation for truth with stated Christian Worldview Essentials that permeate the entire program.</p>
-                    </div>
-                    
-                    <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #A73638;">
-                        <h4 style="color: #2c5f2d; margin-bottom: 0.5rem;">👦 Male-Only Membership</h4>
-                        <p style="color: #555;">Youth membership is limited to males only, providing a uniquely masculine environment.</p>
-                    </div>
-                    
-                    <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #A73638;">
-                        <h4 style="color: #2c5f2d; margin-bottom: 0.5rem;">🎯 Boy-Focused Program</h4>
-                        <p style="color: #555;">Activities designed to let boys be boys, accentuating their strengths in a male-centric environment led by trained Christian men.</p>
-                    </div>
-                    
-                    <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #A73638;">
-                        <h4 style="color: #2c5f2d; margin-bottom: 0.5rem;">🏆 Robust Awards Program</h4>
-                        <p style="color: #555;">Challenging physical, mental, and spiritual objectives that let boys experience real victory and achievement.</p>
-                    </div>
-                    
-                    <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #A73638;">
-                        <h4 style="color: #2c5f2d; margin-bottom: 0.5rem;">⛪ Church-Owned Ministry</h4>
-                        <p style="color: #555;">The Charter Organization owns and operates the troop as its own ministry, ensuring alignment with church values.</p>
-                    </div>
-                    
-                    <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #A73638;">
-                        <h4 style="color: #2c5f2d; margin-bottom: 0.5rem;">✅ Trained Leadership</h4>
-                        <p style="color: #555;">Background-checked and equipped Christian men who complete youth protection training to lead boys safely.</p>
-                    </div>
-                </div>
-                
-                <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: #e8f5e9; border-radius: 8px;">
-                    <p style="color: #2c5f2d; font-weight: bold;">Learn more about how Trail Life USA differs from other programs:</p>
-                    <a href="https://blog.traillifeusa.com/trail-life-responds-to-bsa-name-change" target="_blank" style="display: inline-block; margin-top: 1rem; color: #2c5f2d; font-weight: bold; text-decoration: underline;">Read the Full Comparison →</a>
-                </div>
-            </div>
-            
-            <div style="background: white; padding: 2.5rem; border-radius: 15px; margin-top: 3rem; box-shadow: 0 6px 12px rgba(0,0,0,0.1);">
-                <h3 style="color: #2c5f2d; font-size: 1.8rem; margin-bottom: 1.5rem;">Frequently Asked Questions</h3>
-                
-                <div style="margin-bottom: 1.5rem;">
-                    <h4 style="color: #ff6b35; margin-bottom: 0.5rem;">What should my son bring to meetings?</h4>
-                    <p>Boys should wear their Trail Life uniform (or regular clothes until they receive their uniform), bring a water bottle, notebook, and pen. Specific activities may require additional items - we'll notify you in advance.</p>
-                </div>
-                
-                <div style="margin-bottom: 1.5rem;">
-                    <h4 style="color: #ff6b35; margin-bottom: 0.5rem;">How much does it cost?</h4>
-                    <p><strong>Youth Membership:</strong> $42.27 per year (paid directly to Trail Life USA)<br>
-                    <strong>Adult Membership:</strong> $46.55 per year (covers background checks and youth protection training)</p>
-                    <p style="margin-top: 0.5rem;">Additional costs may include uniforms, handbooks, and troop activity fees. We actively fundraise to minimize costs for families. Fees can be paid online with debit or credit card or in person with cash or check made out to Trail Life Troop PA-1997 and are non-refundable.</p>
-                </div>
-                
-                <div style="margin-bottom: 1.5rem;">
-                    <h4 style="color: #ff6b35; margin-bottom: 0.5rem;">Can I volunteer even if my son isn't a member?</h4>
-                    <p>We welcome adult volunteers! All volunteers must complete a volunteer application and background check. Contact us to learn about opportunities to serve.</p>
-                </div>
-                
-                <div style="margin-bottom: 1.5rem;">
-                    <h4 style="color: #ff6b35; margin-bottom: 0.5rem;">What age groups do you serve?</h4>
-                    <p><strong>Foxes:</strong> Ages 5-6<br>
-                    <strong>Hawks:</strong> Ages 7-8<br>
-                    <strong>Mountain Lions:</strong> Ages 9-10<br>
-                    <strong>Navigators:</strong> Ages 11-13<br>
-                    <strong>Adventurers:</strong> Ages 14-18</p>
-                    <p style="margin-top: 0.5rem;">Each level has age-appropriate activities, challenges, and advancement opportunities designed specifically for that stage of development.</p>
-                </div>
-                
-                <div>
-                    <h4 style="color: #ff6b35; margin-bottom: 0.5rem;">Do you have other questions?</h4>
-                    <p>Contact us at <a href="mailto:TLtroopPA1997@yahoo.com" style="color: #2c5f2d;">TLtroopPA1997@yahoo.com</a> or call <a href="tel:570-316-7600" style="color: #2c5f2d;">570-316-7600</a>. You can also visit us any Tuesday at 6:00 PM!</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="resources">
-            <h2>Resources for Parents & Troop Members</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>📋 Registration</h3>
-                    <p>We welcome new members throughout the year! No waiting periods - join us any Tuesday at 6:00 PM. Contact John Stewart at 570-316-7600 or visit <a href="https://www.traillife.org" target="_blank" style="color: #2c5f2d;">Trail Life USA</a> for registration information.</p>
-                </div>
-                <div class="info-card">
-                    <h3>🛍️ Gear & Uniforms</h3>
-                    <p>Purchase official Trail Life uniforms, patches, and camping gear at the <a href="https://shop.traillifeusa.com/" target="_blank" style="color: #2c5f2d;">Trail Life USA Shop</a>.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="gallery">
-            <h2>Troop Photos & Achievements</h2>
-            <div class="gallery">
-                <div class="gallery-item">Building Emergency Survival Stoves</div>
-                <div class="gallery-item">Fire Safety & Outdoor Cooking</div>
-                <div class="gallery-item">Wilderness Tracking Skills</div>
-                <div class="gallery-item">Building a Trebuchet</div>
-                <div class="gallery-item">Hiking at Ricketts Glen</div>
-                <div class="gallery-item">Saturday Adventures</div>
-                <div class="gallery-item">Fire Ranger Training</div>
-                <div class="gallery-item">Service Projects</div>
-                <div class="gallery-item">Character Development</div>
-            </div>
-            <p style="margin-top: 2rem; text-align: center; color: #666;"><em>Replace these placeholders with actual troop photos showing your adventures and achievements!</em></p>
-        </section>
-
-        <section id="leadership">
-            <h2>Our Leadership Team</h2>
-            <div class="leadership">
-                <div class="leader-card">
-                    <div class="leader-photo">
-                        <img src="image_1.jpeg" alt="John Stewart">
-                    </div>
-                    <h3>John Stewart</h3>
-                    <div class="role">Troop Ministry Liaison</div>
-                    <p>Contact: 570-316-7600</p>
-                </div>
-                <div class="leader-card">
-                    <div class="leader-photo">
-                        <img src="image_3.jpeg" alt="Chris Olsen">
-                    </div>
-                    <h3>Chris Olsen</h3><div class="role">Troopmaster</div>
-                    <p>Leading our troop's weekly activities and outdoor adventures</p>
-                </div>
-                <div class="leader-card">
-                    <div class="leader-photo">
-                        <img src="image_2.jpeg" alt="Bob Boisvert">
-                    </div>
-                    <h3>Bob Boisvert</h3>
-                    <div class="role">Chaplain</div>
-                    <p>Providing spiritual guidance and biblical teaching</p>
-                </div>
-                <div class="leader-card">
-                    <div class="leader-photo">
-                        <img src="image_5.jpeg" alt="Dawn Stewart">
-                    </div>
-                    <h3>Dawn Stewart</h3>
-                    <div class="role">Committee Chairperson</div>
-                    <p>Experienced in organizing campouts, hikes, and service projects. Passionate about coaching, teaching, and outdoor activities including backpacking, camping, and fishing.</p>
-                </div>
-                <div class="leader-card">
-                    <div class="leader-photo">
-                        <img src="image_4.jpeg" alt="Donna Post">
-                    </div>
-                    <h3>Donna Post</h3>
-                    <div class="role">Treasurer</div>
-                    <p>Retired professor of Teacher Education with extensive experience in administration and event planning. Former high school English teacher and Department Chair at Southern Illinois University.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="interest">I'm interested in:</label>
-                        <select id="interest" name="interest">
-                            <option value="joining">Joining the troop</option>
-                            <option value="volunteering">Volunteering</option>
-                            <option value="info">More information</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit">Send Message</button>
-                </form>
-                <p style="margin-top: 2rem; text-align: center;">
-                    <strong>Contact:</strong> John Stewart (Troop Ministry Liaison)<br>
-                    <strong>Phone/Text:</strong> <a href="tel:570-316-7600" style="color: #2c5f2d;">570-316-7600</a><br>
-                    <strong>Email:</strong> <a href="mailto:TLtroopPA1997@yahoo.com" style="color: #2c5f2d;">TLtroopPA1997@yahoo.com</a><br><br>
-                    <strong>Or visit us any Tuesday at 6:00 PM!</strong><br>
-                    Living Word Baptist Church<br>
-                    40 Hess Lane, Sweet Valley, PA
-                </p>
             </div>
         </section>
     </div>
@@ -965,97 +152,10 @@
         <p>Proudly sponsored by <a href="https://www.lwbcsv.com" target="_blank">Living Word Baptist Church</a></p>
         <p>Part of <a href="https://www.traillife.org" target="_blank">Trail Life USA</a></p>
         <p style="margin-top: 1rem;">
-            <a href="https://www.facebook.com/share/g/19nwSQXx7a/" target="_blank" style="color: #97d700; font-size: 1.5rem; text-decoration: none; display: inline-block; margin: 0 0.5rem;">📘 Follow Us on Facebook</a>
+            <a href="https://www.facebook.com/share/g/19nwSQXx7a/" target="_blank" style="color: #97d700; font-size: 1.5rem; text-decoration: none;">📘 Follow Us on Facebook</a>
         </p>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">Adventure, Character, Leadership</p>
     </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Form submission handlers
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We\'ll get back to you soon.\n\nNote: To make this form actually send emails, you\'ll need to connect it to a form service like Formspree, Netlify Forms, or EmailJS.');
-            this.reset();
-        });
-
-        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for subscribing to our newsletter! You\'ll receive our weekly updates soon.\n\nNote: To make this form actually work, you\'ll need to connect it to a form service or email list provider.');
-            this.reset();
-        });
-
-        // PWA Install Button in Navigation
-        const installBtn = document.getElementById('installAppBtn');
-        let deferredPrompt;
-
-        // Show button based on device
-        function showInstallOptions() {
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            const isAndroid = /Android/.test(navigator.userAgent);
-            const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-
-            // Don't show if already installed
-            if (isStandalone) {
-                return;
-            }
-
-            if (isIOS || isAndroid || true) {
-                installBtn.style.display = 'inline-block';
-                installBtn.addEventListener('click', () => {
-                    if (deferredPrompt) {
-                        deferredPrompt.prompt();
-                        deferredPrompt.userChoice.then((choiceResult) => {
-                            deferredPrompt = null;
-                            if (choiceResult.outcome === 'accepted') {
-                                installBtn.style.display = 'none';
-                            }
-                        });
-                    } else {
-                        // Show instructions in an alert for iOS/other browsers
-                        if (isIOS) {
-                            alert('To Install on iPhone:\n\n1. Tap the Share button ⬆️ at the bottom of Safari\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add" - Done!');
-                        } else if (isAndroid) {
-                            alert('To Install on Android:\n\n1. Tap the menu ⋮ (3 dots) in the top right\n2. Tap "Add to Home screen" or "Install app"\n3. Tap "Add" - Done!');
-                        } else {
-                            alert('To Install:\n\nVisit this site on your phone to install the Trailhead PA-1997 app for easy access to troop information!');
-                        }
-                    }
-                });
-            }
-        }
-
-        // Call on page load
-        showInstallOptions();
-
-        // Register Service Worker for PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => console.log('Service Worker registered'))
-                    .catch(err => console.log('Service Worker registration failed'));
-            });
-        }
-
-        // Capture install prompt for Android
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installBtn.style.display = 'inline-block';
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
