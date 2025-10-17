@@ -133,20 +133,20 @@
                 
                 <div style="max-width: 500px; margin: 0 auto; background: white; padding: 2rem; border-radius: 10px;">
                     <form id="newsletterForm" action="https://formspree.io/f/manpvvjv" method="POST" style="text-align: left;">
-                        <div class="form-group">
-                            <label for="newsletter-name" style="color: #2c5f2d;">Name *</label>
-                          <input type="email" id="newsletter-email" name="_replyto" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="newsletter-email" style="color: #2c5f2d;">Email *</label>
-                            <input type="email" id="newsletter-email" name="email" required>
-                        </div> 
-                        <input type="hidden" name="_subject" value="New Newsletter Subscription">
-                        <input type="hidden" name="_next" value="thank-you.html">
-                        <div style="text-align: center;">
-                            <button type="submit">Subscribe</button>
-                        </div>
-                    </form>
+    <div class="form-group">
+        <label for="newsletter-name" style="color: #2c5f2d;">Name *</label>
+        <input type="text" id="newsletter-name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="newsletter-email" style="color: #2c5f2d;">Email Address *</label>
+        <input type="email" id="newsletter-email" name="_replyto" required>
+    </div>
+    <input type="hidden" name="_subject" value="New Newsletter Subscription">
+    <input type="hidden" name="_next" value="thank-you.html">
+    <div style="text-align: center;">
+        <button type="submit">Subscribe</button>
+    </div>
+</form>
                 </div>
             </div>
         </section>
