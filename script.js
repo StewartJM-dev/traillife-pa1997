@@ -17,20 +17,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Form submission handlers
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for your message! We\'ll get back to you soon.\n\nNote: To make this form actually send emails, you\'ll need to connect it to a form service like Formspree, Netlify Forms, or EmailJS.');
-        this.reset();
-    });
+    // Only add the alert handler if the form doesn't have an action attribute
+    if (!contactForm.getAttribute('action') || contactForm.getAttribute('action').includes('YOUR_FORM_ID')) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you soon.\n\nNote: To make this form actually send emails, you\'ll need to connect it to a form service like Formspree, Netlify Forms, or EmailJS.');
+            this.reset();
+        });
+    }
 }
 
 const newsletterForm = document.getElementById('newsletterForm');
 if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for subscribing to our newsletter! You\'ll receive our weekly updates soon.\n\nNote: To make this form actually work, you\'ll need to connect it to a form service or email list provider.');
-        this.reset();
-    });
+    // Only add the alert handler if the form doesn't have an action attribute
+    if (!newsletterForm.getAttribute('action') || newsletterForm.getAttribute('action').includes('YOUR_NEWSLETTER_FORM_ID')) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter! You\'ll receive our weekly updates soon.\n\nNote: To make this form actually work, you\'ll need to connect it to a form service or email list provider.');
+            this.reset();
+        });
+    }
 }
 
 // PWA Install Button
