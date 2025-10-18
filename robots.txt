@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://stewartjm-dev.github.io/traillife-pa1997/sitemap.xml
