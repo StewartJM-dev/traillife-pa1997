@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://stewartjm-dev.github.io/traillife-pa1997/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://stewartjm-dev.github.io/traillife-pa1997/about.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stewartjm-dev.github.io/traillife-pa1997/events.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stewartjm-dev.github.io/traillife-pa1997/resources.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stewartjm-dev.github.io/traillife-pa1997/gallery.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stewartjm-dev.github.io/traillife-pa1997/contact.html</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>
