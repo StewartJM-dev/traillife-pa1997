@@ -1,21 +1,22 @@
 {
-  "name": "Trailhead PA-1997",
-  "short_name": "Trailhead",
-  "description": "Trail Life Troop PA-1997 - Christ-centered outdoor adventures",
-  "start_url": "/",
+  "name": "Trail Life PA-1997",
+  "short_name": "TL PA-1997",
+  "description": "Trail Life Troop PA-1997 - Sweet Valley, PA",
+  "start_url": "/traillife-pa1997/index.html",
+  "scope": "/traillife-pa1997/",
   "display": "standalone",
   "background_color": "#2c5f2d",
   "theme_color": "#2c5f2d",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "image_0.png",
+      "src": "/traillife-pa1997/image_0.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "image_0.png",
+      "src": "/traillife-pa1997/image_7.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
