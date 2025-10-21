@@ -16,17 +16,17 @@
     </header>
 
     <nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="story.html">Our Story</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li style="min-width: 120px;"><button id="installAppBtn">📱 Get App</button></li>
-    </ul>
-</nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="story.html">Our Story</a></li>
+            <li><a href="events.html" class="active">Events</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li style="min-width: 120px;"><button id="installAppBtn">📱 Get App</button></li>
+        </ul>
+    </nav>
 
     <div class="container">
         <section>
@@ -39,38 +39,29 @@
                 <p style="margin-top: 1rem;"><strong>What to Bring:</strong> Bible, Trailman Handbook, Water Bottle</p>
             </div>
 
-            <h3 style="color: #2c5f2d; margin-bottom: 1.5rem; font-size: 1.8rem;">Special Events & Adventures</h3>
+            <h3 style="color: #2c5f2d; margin-bottom: 1.5rem; font-size: 1.8rem;">Next 2 Weeks</h3>
             
-            <div class="calendar-event">
-                <div class="date">📅 October 18th, 2025 - 9:00 AM</div>
-                <h3>Falls Trail Hike at Ricketts Glen State Park</h3>
-                <p>Join us for an epic adventure conquering the famous Falls Trail! This challenging hike takes us past 21 stunning waterfalls in one of Pennsylvania's most spectacular state parks. Bring sturdy hiking boots, water, snacks, and your sense of adventure. This is the kind of terrain that builds character and creates memories that last a lifetime!</p>
+            <div id="next-two-weeks-events">
+                <p style="text-align: center; color: #666; padding: 2rem;">Loading events...</p>
             </div>
+
+            <h3 style="color: #2c5f2d; margin: 3rem 0 1.5rem 0; font-size: 1.8rem;">Weekend Adventures (Fridays-Sundays)</h3>
             
-            <div class="calendar-event">
-                <div class="date">📅 Coming Soon</div>
-                <h3>Medieval Siege Warfare: Trebuchet Build & Pumpkin Launch</h3>
-                <p>Engineering meets outdoor adventure! Our troop will construct a working trebuchet and launch pumpkins using medieval siege technology. Boys will learn physics, teamwork, and problem-solving while building this impressive machine. Stay tuned for launch day details - this is going to be epic!</p>
+            <div id="weekend-events">
+                <p style="text-align: center; color: #666; padding: 2rem;">Loading weekend events...</p>
             </div>
-            
-            <div class="calendar-event">
-                <div class="date">📅 Monthly</div>
-                <h3>Saturday Wilderness Adventures</h3>
-                <p>Monthly Saturday hikes and outdoor activities at Ricketts Glen State Park and surrounding Pennsylvania wilderness areas. Specific dates announced at Tuesday meetings.</p>
-        
+
+            <h3 style="color: #2c5f2d; margin: 3rem 0 1.5rem 0; font-size: 1.8rem;">📅 Full Calendar</h3>
+            <div style="background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <iframe 
+                    src="https://calendar.google.com/calendar/embed?src=0ouijv00b6d6pv2d5oqqhh5rm1tdlee7%40import.calendar.google.com&ctz=America%2FNew_York" 
+                    style="border: 0; border-radius: 8px;" 
+                    width="100%" 
+                    height="600" 
+                    frameborder="0" 
+                    scrolling="no">
+                </iframe>
             </div>
-            <h3 style="color: #2c5f2d; margin: 3rem 0 1.5rem 0; font-size: 1.8rem;">📅 Upcoming Events Calendar</h3>
-<div style="background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    <iframe 
-        src="https://calendar.google.com/calendar/embed?src=0ouijv00b6d6pv2d5oqqhh5rm1tdlee7%40import.calendar.google.com&ctz=America%2FNew_York" 
-        style="border: 0; border-radius: 8px;" 
-        width="100%" 
-        height="600" 
-        frameborder="0" 
-        scrolling="no">
-    </iframe>
-</div>
-</div>
         </section>
 
         <section id="fundraiser" style="margin-top: 3rem;">
@@ -126,5 +117,101 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+    const CALENDAR_ID = '0ouijv00b6d6pv2d5oqqhh5rm1tdlee7@import.calendar.google.com';
+    const API_KEY = 'AIzaSyAO1G7TptJAuy9UhBl7J5IzZHlr-XNgRn8';
+
+    function formatEventDate(startDate, hasTime) {
+        return startDate.toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: hasTime ? 'numeric' : undefined,
+            minute: hasTime ? '2-digit' : undefined
+        });
+    }
+
+    function createEventHTML(event) {
+        const startDate = new Date(event.start.dateTime || event.start.date);
+        const formattedDate = formatEventDate(startDate, !!event.start.dateTime);
+        
+        return `
+            <div class="calendar-event">
+                <div class="date">📅 ${formattedDate}</div>
+                <h3>${event.summary}</h3>
+                <p>${event.description || 'See full calendar for details'}</p>
+                ${event.location ? `<p><strong>Location:</strong> ${event.location}</p>` : ''}
+            </div>
+        `;
+    }
+
+    async function loadNextTwoWeeksEvents() {
+        const now = new Date();
+        const twoWeeksLater = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
+        const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${now.toISOString()}&timeMax=${twoWeeksLater.toISOString()}&orderBy=startTime&singleEvents=true&maxResults=50`;
+        
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            const eventsContainer = document.getElementById('next-two-weeks-events');
+            eventsContainer.innerHTML = '';
+            
+            if (data.items && data.items.length > 0) {
+                data.items.forEach(event => {
+                    eventsContainer.innerHTML += createEventHTML(event);
+                });
+            } else {
+                eventsContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">No events scheduled for the next 2 weeks. Check back soon!</p>';
+            }
+        } catch (error) {
+            console.error('Error loading events:', error);
+            eventsContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Unable to load events. Please check the calendar below.</p>';
+        }
+    }
+
+    async function loadWeekendEvents() {
+        const now = new Date();
+        const oneMonthLater = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+        const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${now.toISOString()}&timeMax=${oneMonthLater.toISOString()}&orderBy=startTime&singleEvents=true&maxResults=50`;
+        
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            const eventsContainer = document.getElementById('weekend-events');
+            eventsContainer.innerHTML = '';
+            
+            if (data.items && data.items.length > 0) {
+                // Filter for Friday (5), Saturday (6), Sunday (0)
+                const weekendEvents = data.items.filter(event => {
+                    const eventDate = new Date(event.start.dateTime || event.start.date);
+                    const dayOfWeek = eventDate.getDay();
+                    return dayOfWeek === 0 || dayOfWeek === 5 || dayOfWeek === 6;
+                });
+                
+                if (weekendEvents.length > 0) {
+                    weekendEvents.forEach(event => {
+                        eventsContainer.innerHTML += createEventHTML(event);
+                    });
+                } else {
+                    eventsContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">No weekend adventures scheduled yet. Check back soon!</p>';
+                }
+            } else {
+                eventsContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">No weekend adventures scheduled yet. Check back soon!</p>';
+            }
+        } catch (error) {
+            console.error('Error loading weekend events:', error);
+            eventsContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Unable to load events. Please check the calendar below.</p>';
+        }
+    }
+
+    // Load both event sections when page loads
+    window.addEventListener('load', () => {
+        loadNextTwoWeeksEvents();
+        loadWeekendEvents();
+    });
+    </script>
 </body>
 </html>
