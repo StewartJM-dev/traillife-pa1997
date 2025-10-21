@@ -184,5 +184,58 @@ Welcome to our troop. Welcome to the adventure. Welcome to a brotherhood that wi
     </footer>
 
     <script src="script.js"></script>
+    <script>
+const CALENDAR_ID = '0ouijv00b6d6pv2d5oqqhh5rm1tdlee7@import.calendar.google.com';
+const API_KEY = 'AIzaSyAO1G7TptJAuy9UhBl7J5IzZHlr-XNgRn8';
+
+async function loadUpcomingEvents() {
+    const now = new Date().toISOString();
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${now}&maxResults=2&orderBy=startTime&singleEvents=true`;
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        const eventsContainer = document.getElementById('upcoming-events-preview');
+        if (!eventsContainer) return;
+        
+        eventsContainer.innerHTML = '';
+        
+        if (data.items && data.items.length > 0) {
+            data.items.forEach(event => {
+                const startDate = new Date(event.start.dateTime || event.start.date);
+                const formattedDate = startDate.toLocaleDateString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: event.start.dateTime ? 'numeric' : undefined,
+                    minute: event.start.dateTime ? '2-digit' : undefined
+                });
+                
+                const eventHTML = `
+                    <div class="calendar-event">
+                        <div class="date">📅 ${formattedDate}</div>
+                        <h3>${event.summary}</h3>
+                        <p>${event.description || 'See full calendar for details'}</p>
+                        ${event.location ? `<p><strong>Location:</strong> ${event.location}</p>` : ''}
+                    </div>
+                `;
+                eventsContainer.innerHTML += eventHTML;
+            });
+        } else {
+            eventsContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">No upcoming events scheduled. Check back soon!</p>';
+        }
+    } catch (error) {
+        console.error('Error loading events:', error);
+        eventsContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">View our <a href="events.html" style="color: #2c5f2d; font-weight: bold;">Events Calendar</a> for upcoming activities!</p>';
+    }
+}
+
+// Load events when page loads
+if (document.getElementById('upcoming-events-preview')) {
+    window.addEventListener('load', loadUpcomingEvents);
+}
+</script>
 </body>
 </html>
