@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trailblazer Weekly - Trail Life PA-1997</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .newsletter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .newsletter-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid #e0e0e0;
+        }
+
+        .newsletter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(44, 95, 45, 0.2);
+            border-color: #2c5f2d;
+        }
+
+        .newsletter-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #2c5f2d 0%, #97d700 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .newsletter-thumbnail .edition {
+            font-size: 1.2rem;
+            font-weight: bold;
+            opacity: 0.9;
+        }
+
+        .newsletter-thumbnail::after {
+            content: 'PDF';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c5f2d;
+            padding: 0.25rem 0.75rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .newsletter-content {
+            padding: 1.5rem;
+        }
+
+        .newsletter-title {
+            color: #2c5f2d;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #2c5f2d;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1f4420;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+
+        .subscribe-banner {
+            background: linear-gradient(135deg, #2c5f2d 0%, #97d700 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .subscribe-banner h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-empty {
+            text-align: center;
+            padding: 3rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .newsletter-empty h3 {
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .newsletter-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="image_7.png" alt="Trail Life Troop PA-1997 Logo">
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="story.html">Our Story</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="newsletter.html">Newsletter</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li style="min-width: 120px;"><button id="installAppBtn">📱 Get App</button></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section>
+            <h2>🔥 Trailblazer Weekly</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8;">
+                Our weekly newsletter keeps you up to date with the latest adventures, announcements, and upcoming events! Browse past editions below.
+            </p>
+
+            <div class="subscribe-banner">
+                <h3>📬 Get Trailblazer Weekly Delivered to Your Inbox</h3>
+                <p style="margin-bottom: 1.5rem;">Never miss an update! Contact us to subscribe and receive our newsletter every week.</p>
+                <a href="contact.html" class="btn btn-primary" style="background: white; color: #2c5f2d; display: inline-block;">
+                    Subscribe to Trailblazer Weekly
+                </a>
+            </div>
+
+            <div class="newsletter-grid">
+                <!-- Newsletter Entry 1 - Edition 3 (Most Recent) -->
+                <div class="newsletter-card">
+                    <div class="newsletter-thumbnail">
+                        📰
+                        <div class="edition">Edition #3</div>
+                    </div>
+                    <div class="newsletter-content">
+                        <div class="newsletter-title">Trailblazer Weekly - Edition 3</div>
+                        <div class="newsletter-date">📅 Tuesday, October 21, 2025</div>
+                        <div class="newsletter-description">
+                            This week's adventures, upcoming events, and important announcements for the troop.
+                        </div>
+                        <div class="newsletter-actions">
+                            <a href="newsletters/trailblazer-weekly-03.pdf" class="btn btn-primary" target="_blank">
+                                📖 Read
+                            </a>
+                            <a href="newsletters/trailblazer-weekly-03.pdf" class="btn btn-secondary" download>
+                                ⬇️ Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter Entry 2 - Edition 2 -->
+                <div class="newsletter-card">
+                    <div class="newsletter-thumbnail">
+                        📰
+                        <div class="edition">Edition #2</div>
+                    </div>
+                    <div class="newsletter-content">
+                        <div class="newsletter-title">Trailblazer Weekly - Edition 2</div>
+                        <div class="newsletter-date">📅 Tuesday, October 15, 2024</div>
+                        <div class="newsletter-description">
+                            Week two updates including activity recaps, photos, and what's coming up next week.
+                        </div>
+                        <div class="newsletter-actions">
+                            <a href="newsletters/trailblazer-weekly-02.pdf" class="btn btn-primary" target="_blank">
+                                📖 Read
+                            </a>
+                            <a href="newsletters/trailblazer-weekly-02.pdf" class="btn btn-secondary" download>
+                                ⬇️ Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter Entry 3 - Edition 1 -->
+                <div class="newsletter-card">
+                    <div class="newsletter-thumbnail">
+                        📰
+                        <div class="edition">Edition #1</div>
+                    </div>
+                    <div class="newsletter-content">
+                        <div class="newsletter-title">Trailblazer Weekly - Edition 1</div>
+                        <div class="newsletter-date">📅 Tuesday, October 8, 2024</div>
+                        <div class="newsletter-description">
+                            The inaugural edition! Welcome to Trailblazer Weekly, your source for all things PA-1997.
+                        </div>
+                        <div class="newsletter-actions">
+                            <a href="newsletters/trailblazer-weekly-01.pdf" class="btn btn-primary" target="_blank">
+                                📖 Read
+                            </a>
+                            <a href="newsletters/trailblazer-weekly-01.pdf" class="btn btn-secondary" download>
+                                ⬇️ Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more newsletter cards as needed -->
+            </div>
+
+            <!-- If no newsletters yet, show this instead of the grid -->
+            <!-- <div class="newsletter-empty">
+                <h3>📬 Coming Soon!</h3>
+                <p>Trailblazer Weekly archives will be available here soon. Check back for updates!</p>
+                <p style="margin-top: 1rem;">
+                    <a href="contact.html" style="color: #2c5f2d; font-weight: bold;">Contact us</a> to subscribe to our weekly newsletter.
+                </p>
+            </div> -->
+
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Trail Life Troop PA-1997. All rights reserved.</p>
+        <p>Proudly sponsored by <a href="https://www.lwbcsv.com" target="_blank">Living Word Baptist Church</a></p>
+        <p>Part of <a href="https://www.traillife.org" target="_blank">Trail Life USA</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
