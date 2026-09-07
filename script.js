@@ -1,23 +1,17 @@
 /* Trail Life Troop PA-1997 — site script
    ------------------------------------------------------------
-   Everything you might need to change lives in SITE_CONFIG.
-   The site reads the troop's Google Calendar live, so keeping
-   the calendar current keeps the website current. */
+   Google Calendar is the source of truth for event facts. Google Drive is
+   the source of truth for approved posters. The GitHub Action in
+   .github/workflows/sync-events.yml reads the calendar every ~15 minutes
+   and writes events.json — this file only ever RENDERS that data. To
+   change how events look on the site, edit the calendar or this file;
+   to change which events exist, edit the calendar. */
 
 const SITE_CONFIG = {
-  // "Trail Life Troop PA-1997 Events" calendar (must be set to public in Google Calendar).
-  calendarId: '8187256076839d823a752f8c6d11bb571899eabed453ddd7244cd412fe39406b@group.calendar.google.com',
-  apiKey: 'AIzaSyAO1G7TptJAuy9UhBl7J5IzZHlr-XNgRn8',
   timeZone: 'America/New_York',
   // Troop YouTube channel — the site shows the latest uploads automatically.
   youtubeChannelId: 'UCR1MRDtKONNbhKUNqIq99CA',
   youtubeChannelUrl: 'https://www.youtube.com/@traillifetrooppa1997',
-  // Events whose title starts with any of these are leadership-only and never shown on the site.
-  hiddenPrefixes: ['Church Use', 'Leadership', 'Internal', 'Committee'],
-  // Titles that contain these words are treated as internal to-dos, not family events.
-  hiddenWords: ['Flyer for Church'],
-  // Prefixes stripped from titles for display.
-  stripPrefixes: ['PA-1997 Meeting |', 'PA-1997 |', 'PA-1997 —', 'PA-1997 -'],
 };
 
 /* ---------- Mobile nav ---------- */
@@ -32,188 +26,184 @@ const SITE_CONFIG = {
   });
 })();
 
-/* ---------- Calendar helpers ---------- */
-function cleanTitle(raw) {
-  let t = raw.trim();
-  let tentative = false;
-  if (/^TENTATIVE\s*\|/i.test(t)) { tentative = true; t = t.replace(/^TENTATIVE\s*\|\s*/i, ''); }
-  for (const p of SITE_CONFIG.stripPrefixes) {
-    if (t.startsWith(p)) { t = t.slice(p.length).trim(); break; }
+/* ---------- events.json ---------- */
+let EVENTS_CACHE = null;
+async function loadEvents() {
+  if (EVENTS_CACHE) return EVENTS_CACHE;
+  try {
+    const res = await fetch('events.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('events.json request failed: ' + res.status);
+    const data = await res.json();
+    EVENTS_CACHE = data.events || [];
+    return EVENTS_CACHE;
+  } catch (err) {
+    console.error(err);
+    EVENTS_CACHE = [];
+    return EVENTS_CACHE;
   }
-  return { title: t, tentative };
 }
 
-function isHidden(ev) {
-  const s = ev.summary || '';
-  if (SITE_CONFIG.hiddenPrefixes.some(p => s.startsWith(p))) return true;
-  if (SITE_CONFIG.hiddenWords.some(w => s.includes(w))) return true;
-  return false;
+function fmtDateLong(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  return d.toLocaleDateString('en-US', { timeZone: SITE_CONFIG.timeZone, weekday: 'long', month: 'long', day: 'numeric' });
 }
-
-function isMeeting(ev) {
-  return /^PA-1997 Meeting/i.test(ev.summary || '');
+function fmtDateShort(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  return d.toLocaleDateString('en-US', { timeZone: SITE_CONFIG.timeZone, month: 'short', day: 'numeric' });
 }
-
-function eventStart(ev) {
-  return new Date(ev.start.dateTime || (ev.start.date + 'T12:00:00'));
+function fmtTime12(hhmm) {
+  if (!hhmm) return '';
+  const [h, m] = hhmm.split(':').map(Number);
+  const d = new Date(); d.setHours(h, m, 0, 0);
+  return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
 }
-
-function isAllDayish(ev) {
-  if (ev.start.date) return true;
-  // Events entered as 00:00–23:59 are really all-day events.
-  const s = new Date(ev.start.dateTime), e = new Date(ev.end.dateTime);
-  return s.getHours() === 0 && s.getMinutes() === 0 && (e - s) >= 23 * 3600 * 1000;
-}
-
-function fmtDate(d, opts) {
-  return d.toLocaleDateString('en-US', Object.assign({ timeZone: SITE_CONFIG.timeZone }, opts));
-}
-function fmtTime(d) {
-  return d.toLocaleTimeString('en-US', { timeZone: SITE_CONFIG.timeZone, hour: 'numeric', minute: '2-digit' });
-}
-
 function whenText(ev) {
-  const s = eventStart(ev);
-  const e = new Date(ev.end.dateTime || (ev.end.date + 'T12:00:00'));
-  const day = fmtDate(s, { weekday: 'long', month: 'long', day: 'numeric' });
-  if (isAllDayish(ev)) {
-    const lastDay = ev.start.date ? new Date(e.getTime() - 86400000) : e;
-    if (lastDay.toDateString() !== s.toDateString()) {
-      return day + ' – ' + fmtDate(lastDay, { weekday: 'long', month: 'long', day: 'numeric' });
-    }
-    return day;
+  const startDay = fmtDateLong(ev.date);
+  if (ev.allDay) {
+    if (ev.endDate && ev.endDate !== ev.date) return startDay + ' – ' + fmtDateLong(ev.endDate);
+    return startDay;
   }
-  return day + ', ' + fmtTime(s) + ' – ' + fmtTime(e);
+  return startDay + ', ' + fmtTime12(ev.startTime) + ' – ' + fmtTime12(ev.endTime);
 }
-
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+// Defense-in-depth sanitizer for description HTML, even though the Action
+// already only writes plain <p>/<br> markup into events.json.
 function safeDescription(html) {
-  // Calendar descriptions are entered by troop leadership; allow basic tags only.
   const div = document.createElement('div');
   div.innerHTML = html || '';
   div.querySelectorAll('script, style, iframe, img').forEach(n => n.remove());
   div.querySelectorAll('*').forEach(n => { for (const a of [...n.attributes]) if (a.name !== 'href') n.removeAttribute(a.name); });
   return div.innerHTML;
 }
-
-async function fetchEvents(days) {
-  const now = new Date();
-  const max = new Date(now.getTime() + days * 86400000);
-  const url = 'https://www.googleapis.com/calendar/v3/calendars/' + encodeURIComponent(SITE_CONFIG.calendarId) +
-    '/events?key=' + SITE_CONFIG.apiKey + '&timeMin=' + now.toISOString() + '&timeMax=' + max.toISOString() +
-    '&orderBy=startTime&singleEvents=true&maxResults=120';
-  const res = await fetch(url);
-  if (!res.ok) throw new Error('Calendar request failed: ' + res.status);
-  const data = await res.json();
-  return (data.items || []).filter(ev => ev.status !== 'cancelled' && !isHidden(ev));
+function titleTag(ev) {
+  if (ev.cancelled) return '<span class="tag tag-cancelled">Cancelled</span>';
+  if (ev.tentative) return '<span class="tag">Tentative</span>';
+  return '';
+}
+function posterImg(ev, extraClass) {
+  if (!ev.poster) {
+    return '<div class="poster-fallback' + (extraClass ? ' ' + extraClass : '') + '">' + escapeHtml(ev.displayTitle) + '</div>';
+  }
+  const src = 'https://drive.google.com/thumbnail?id=' + ev.poster.fileId + '&sz=w1000';
+  return '<img class="poster-img" data-fallback-class="' + escapeHtml(extraClass || '') + '" ' +
+    'src="' + src + '" alt="' + escapeHtml(ev.displayTitle) + '" loading="lazy">';
+}
+function fallbackBlock(text, cls) {
+  const d = document.createElement('div');
+  d.className = 'poster-fallback' + (cls ? ' ' + cls : '');
+  d.textContent = text;
+  return d;
+}
+function wireImageFallbacks(root) {
+  root.querySelectorAll('img.poster-img').forEach(img => {
+    img.addEventListener('error', () => img.replaceWith(fallbackBlock(img.alt, img.dataset.fallbackClass)), { once: true });
+  });
 }
 
-/* ---------- Home page: this week ---------- */
+/* ---------- Home page: next up on the trail ---------- */
 async function loadThisWeek() {
   const meetEl = document.getElementById('next-meeting');
   const eventEl = document.getElementById('next-event');
   if (!meetEl && !eventEl) return;
-  try {
-    const events = await fetchEvents(120);
-    const meeting = events.find(isMeeting);
-    const big = events.find(ev => !isMeeting(ev));
+  const events = await loadEvents();
+  const upcoming = events.filter(e => !e.cancelled);
+  const meeting = upcoming.find(e => e.isMeeting);
+  const big = upcoming.find(e => !e.isMeeting);
 
-    if (meetEl) {
-      if (meeting) {
-        const { title } = cleanTitle(meeting.summary);
-        meetEl.innerHTML =
-          '<div class="kicker">Next troop meeting</div>' +
-          '<h3>' + escapeHtml(title) + '</h3>' +
-          '<div class="when">' + escapeHtml(whenText(meeting)) + '</div>' +
-          '<div class="detail">' + safeDescription(meeting.description).replace(/Approved 2026.?27 program calendar\.?/i, '') + '</div>';
-      } else {
-        meetEl.innerHTML = '<div class="kicker">Next troop meeting</div><h3>Every Tuesday, 6:00 PM</h3><p class="detail">Living Word Baptist Church, 40 Hess Lane, Sweet Valley. Check the calendar for this week\'s lesson.</p>';
-      }
+  if (meetEl) {
+    if (meeting) {
+      meetEl.innerHTML =
+        '<div class="kicker">Next troop meeting</div>' +
+        '<h3>' + escapeHtml(meeting.displayTitle) + titleTag(meeting) + '</h3>' +
+        '<div class="when">' + escapeHtml(whenText(meeting)) + '</div>' +
+        '<div class="detail">' + safeDescription(meeting.description) + '</div>';
+    } else {
+      meetEl.innerHTML = '<div class="kicker">Next troop meeting</div><h3>Every Tuesday, 6:00 PM</h3><p class="detail">Living Word Baptist Church, 40 Hess Lane, Sweet Valley. Check the calendar for this week\'s lesson.</p>';
     }
-    if (eventEl) {
-      if (big) {
-        const { title, tentative } = cleanTitle(big.summary);
-        eventEl.innerHTML =
-          '<div class="kicker">Next special event</div>' +
-          '<h3>' + escapeHtml(title) + (tentative ? '<span class="tag">Tentative</span>' : '') + '</h3>' +
-          '<div class="when">' + escapeHtml(whenText(big)) + '</div>' +
-          '<div class="detail">' + safeDescription(big.description) +
-          (big.location ? '<p class="muted">' + escapeHtml(big.location) + '</p>' : '') + '</div>' +
-          '<p style="margin:.75rem 0 0"><a href="events.html">See everything coming up</a></p>';
-      } else {
-        eventEl.innerHTML = '<div class="kicker">Next special event</div><p class="detail">Nothing scheduled yet. <a href="events.html">Check the calendar.</a></p>';
-      }
+  }
+  if (eventEl) {
+    if (big) {
+      eventEl.innerHTML =
+        '<div class="kicker">Next special event</div>' +
+        '<h3>' + escapeHtml(big.displayTitle) + titleTag(big) + '</h3>' +
+        '<div class="when">' + escapeHtml(whenText(big)) + '</div>' +
+        '<div class="detail">' + safeDescription(big.description) +
+        (big.location ? '<p class="muted">' + escapeHtml(big.location) + '</p>' : '') + '</div>' +
+        '<p style="margin:.75rem 0 0"><a href="events.html">See everything coming up</a></p>';
+    } else {
+      eventEl.innerHTML = '<div class="kicker">Next special event</div><p class="detail">Nothing scheduled yet. <a href="events.html">Check the calendar.</a></p>';
     }
-  } catch (err) {
-    console.error(err);
-    const fallback = '<div class="kicker">Troop calendar</div><h3>Every Tuesday, 6:00 PM</h3><p class="detail">Living Word Baptist Church, Sweet Valley. The live calendar couldn\'t load — <a href="events.html">open the events page</a>.</p>';
-    if (meetEl) meetEl.innerHTML = fallback;
-    if (eventEl) eventEl.style.display = 'none';
   }
 }
 
-/* ---------- Events page: upcoming list ---------- */
+/* ---------- Poster rail (home) + feature list (events page) ---------- */
+async function loadPosterRail() {
+  const el = document.getElementById('poster-rail');
+  if (!el) return;
+  const events = await loadEvents();
+  const withPosters = events.filter(e => e.poster && !e.cancelled).slice(0, 6);
+  if (!withPosters.length) { el.closest('section').style.display = 'none'; return; }
+  el.innerHTML = withPosters.map(ev => `
+      <a class="poster" href="events.html#ev-${ev.id}">
+        <figure>${posterImg(ev)}</figure>
+        <div class="poster-meta"><div class="date">${escapeHtml(fmtDateShort(ev.date))}</div><h3>${escapeHtml(ev.displayTitle)}${titleTag(ev)}</h3><p>${escapeHtml(ev.firstParagraph || '')}</p></div>
+      </a>`).join('');
+  wireImageFallbacks(el);
+}
+
+async function loadFeatureList() {
+  const el = document.getElementById('feature-list');
+  if (!el) return;
+  const events = await loadEvents();
+  const withPosters = events.filter(e => e.poster && !e.cancelled);
+  if (!withPosters.length) { el.closest('section').style.display = 'none'; return; }
+  el.innerHTML = withPosters.map(ev => `
+      <div class="feature" id="ev-${ev.id}">
+        <figure>${posterImg(ev, 'compact')}</figure>
+        <div class="feature-body"><div class="date">${escapeHtml(fmtDateShort(ev.date))}</div><h3>${escapeHtml(ev.displayTitle)}${titleTag(ev)}</h3><p>${escapeHtml(ev.firstParagraph || '')}</p></div>
+      </div>`).join('');
+  wireImageFallbacks(el);
+}
+
+/* ---------- Events page: full upcoming list ---------- */
 async function loadUpcomingList() {
   const list = document.getElementById('upcoming-list');
   if (!list) return;
-  try {
-    const events = await fetchEvents(150);
-    if (!events.length) {
-      list.innerHTML = '<li class="month-head"><h3>Nothing on the calendar yet</h3></li>';
-      return;
-    }
-    let lastMonth = '';
-    let html = '';
-    for (const ev of events) {
-      const s = eventStart(ev);
-      const month = fmtDate(s, { month: 'long', year: 'numeric' });
-      if (month !== lastMonth) { html += '<li class="month-head"><h3>' + month + '</h3></li>'; lastMonth = month; }
-      const { title, tentative } = cleanTitle(ev.summary);
-      html +=
-        '<li>' +
-          '<div class="event-date"><div class="m">' + fmtDate(s, { month: 'short' }) + '</div><div class="d">' + fmtDate(s, { day: 'numeric' }) + '</div><div class="w">' + fmtDate(s, { weekday: 'short' }) + '</div></div>' +
-          '<div class="event-body">' +
-            '<h3>' + escapeHtml(title) + (tentative ? '<span class="tag" style="background:#c9932b;color:#14291c;font:700 .75rem Open Sans,sans-serif;padding:.15rem .5rem;border-radius:3px;margin-left:.4rem;vertical-align:middle">Tentative</span>' : '') + '</h3>' +
-            '<div class="when">' + escapeHtml(whenText(ev)) + (ev.location ? ' · ' + escapeHtml(ev.location) : '') + '</div>' +
-            '<div class="detail">' + safeDescription(ev.description).replace(/Approved 2026.?27 program calendar\.?/i, '') + '</div>' +
-          '</div>' +
-        '</li>';
-    }
-    list.innerHTML = html;
-  } catch (err) {
-    console.error(err);
-    list.innerHTML = '<li class="month-head"><h3>The live list couldn\'t load. Use the calendar below.</h3></li>';
+  const events = await loadEvents();
+  if (!events.length) {
+    list.innerHTML = '<li class="month-head"><h3>Nothing on the calendar yet</h3></li>';
+    return;
   }
+  let lastMonth = '';
+  let html = '';
+  for (const ev of events) {
+    const d = new Date(ev.date + 'T12:00:00');
+    const month = d.toLocaleDateString('en-US', { timeZone: SITE_CONFIG.timeZone, month: 'long', year: 'numeric' });
+    if (month !== lastMonth) { html += '<li class="month-head"><h3>' + month + '</h3></li>'; lastMonth = month; }
+    const idAttr = ev.poster ? '' : ' id="ev-' + ev.id + '"'; // poster events already anchor via their feature card
+    html +=
+      '<li' + idAttr + (ev.cancelled ? ' class="is-cancelled"' : '') + '>' +
+        '<div class="event-date"><div class="m">' + d.toLocaleDateString('en-US', { timeZone: SITE_CONFIG.timeZone, month: 'short' }) + '</div><div class="d">' + d.toLocaleDateString('en-US', { timeZone: SITE_CONFIG.timeZone, day: 'numeric' }) + '</div><div class="w">' + d.toLocaleDateString('en-US', { timeZone: SITE_CONFIG.timeZone, weekday: 'short' }) + '</div></div>' +
+        '<div class="event-body">' +
+          '<h3>' + escapeHtml(ev.displayTitle) + titleTag(ev) + '</h3>' +
+          '<div class="when">' + escapeHtml(whenText(ev)) + (ev.location ? ' · ' + escapeHtml(ev.location) : '') + '</div>' +
+          '<div class="detail">' + safeDescription(ev.description) + '</div>' +
+        '</div>' +
+      '</li>';
+  }
+  list.innerHTML = html;
 }
 
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-}
-
-/* ---------- Poster images: Drive first, local fallback ---------- */
-document.querySelectorAll('img[data-fallback]').forEach(img => {
-  img.addEventListener('error', () => {
-    if (img.dataset.tried) { img.replaceWith(fallbackBlock(img.alt)); return; }
-    img.dataset.tried = '1';
-    img.src = img.dataset.fallback;
-  });
-});
-function fallbackBlock(text) {
-  const d = document.createElement('div');
-  d.className = 'poster-fallback';
-  d.textContent = text;
-  return d;
-}
-
-/* ---------- Gallery page: latest YouTube videos ---------- */
+/* ---------- YouTube: latest uploads ---------- */
 async function loadYouTubeVideos() {
   const wrap = document.getElementById('youtube-videos');
   if (!wrap) return;
   try {
-    // Standard YouTube convention: a channel's "uploads" playlist ID is its
-    // channel ID with the UC prefix swapped for UU. Avoids a second API call.
     const uploadsPlaylist = SITE_CONFIG.youtubeChannelId.replace(/^UC/, 'UU');
     const url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=8&playlistId=' +
-      uploadsPlaylist + '&key=' + SITE_CONFIG.apiKey;
+      uploadsPlaylist + '&key=AIzaSyAO1G7TptJAuy9UhBl7J5IzZHlr-XNgRn8';
     const res = await fetch(url);
     if (!res.ok) throw new Error('YouTube request failed: ' + res.status);
     const data = await res.json();
@@ -262,4 +252,10 @@ window.addEventListener('beforeinstallprompt', e => {
   }
 });
 
-window.addEventListener('load', () => { loadThisWeek(); loadUpcomingList(); loadYouTubeVideos(); });
+window.addEventListener('load', () => {
+  loadThisWeek();
+  loadUpcomingList();
+  loadPosterRail();
+  loadFeatureList();
+  loadYouTubeVideos();
+});
