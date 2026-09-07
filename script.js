@@ -344,7 +344,11 @@ async function loadHeroSlideshow() {
     const res = await fetch('gallery.json', { cache: 'no-store' });
     if (!res.ok) throw new Error('gallery.json request failed: ' + res.status);
     const data = await res.json();
-    const photos = (data.photos || []).slice(0, 8);
+    // Hero photos are the ones John has starred in Drive. Until any are
+    // starred, fall back to the newest approved photos so the hero still
+    // rotates instead of sitting empty.
+    const starred = data.heroPhotos || [];
+    const photos = (starred.length ? starred : (data.photos || [])).slice(0, 8);
     if (!photos.length) return; // keep the static branded banner showing
 
     // Preload everything first so the crossfade never shows a blank frame,
