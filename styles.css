@@ -190,21 +190,28 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .poster-band h2 { color: #fff; }
 .poster-band .section-head p { color: rgba(255,255,255,.75); }
 .poster-rail {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  padding-bottom: 1rem;
+  margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter));
+  padding-left: var(--gutter); padding-right: var(--gutter);
 }
-@media (max-width: 980px) { .poster-rail { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) {
-  .poster-rail {
-    display: flex; overflow-x: auto; gap: 1rem;
-    scroll-snap-type: x mandatory; padding-bottom: .75rem;
-    margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter));
-    padding-left: var(--gutter); padding-right: var(--gutter);
-  }
-  .poster { flex: 0 0 78%; scroll-snap-align: start; }
-}
+.poster-rail .poster, .poster-rail .poster-more { flex: 0 0 min(440px, 86vw); scroll-snap-align: start; }
 .poster { background: #0e1e14; color: #fff; text-decoration: none; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,.08); }
+.poster-more {
+  background: linear-gradient(160deg, var(--forest), #0e1e14);
+  color: #fff; text-decoration: none;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  padding: 2.5rem 1.75rem; border: 1px solid rgba(255,255,255,.14);
+}
+.poster-more-arrow { font-family: var(--display); font-size: 2.75rem; color: var(--gold-light); line-height: 1; margin-bottom: .5rem; }
+.poster-more h3 { color: #fff; margin-bottom: .4rem; }
+.poster-more p { color: rgba(255,255,255,.75); margin: 0; font-size: .95rem; }
+.poster-more:hover { background: linear-gradient(160deg, var(--moss), #14291c); }
 .poster figure { margin: 0; aspect-ratio: 4 / 5; background: #0a1710; overflow: hidden; }
 .poster img { width: 100%; height: 100%; object-fit: cover; }
 .poster .poster-fallback {
