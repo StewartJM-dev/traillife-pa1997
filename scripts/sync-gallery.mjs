@@ -36,7 +36,7 @@ async function listFolderImages(folderId) {
     url.searchParams.set('q', q);
     url.searchParams.set('orderBy', 'modifiedTime desc');
     url.searchParams.set('pageSize', '100');
-    url.searchParams.set('fields', 'nextPageToken,files(id,name,mimeType,modifiedTime)');
+    url.searchParams.set('fields', 'nextPageToken,files(id,name,mimeType,modifiedTime,description)');
     if (pageToken) url.searchParams.set('pageToken', pageToken);
     const res = await fetch(url);
     if (!res.ok) {
@@ -50,11 +50,26 @@ async function listFolderImages(folderId) {
   return files.slice(0, MAX_PHOTOS);
 }
 
+// Turns "Archery Action - DSC_1059.JPG" into "Archery Action" — strips the
+// file extension and a trailing camera-generated code (DSC/IMG/PXL/MOV/VID
+// followed by digits), so a well-named file gets a clean caption with zero
+// extra effort. Files without that pattern pass through unchanged.
+export function humanCaption(filename) {
+  const noExt = filename.replace(/\.[a-z0-9]+$/i, '');
+  const cleaned = noExt.replace(/\s*-\s*(DSC|IMG|PXL|MOV|VID)?_?\d+$/i, '').trim();
+  return cleaned || noExt;
+}
+
 function transform(file) {
   const id = file.id;
+  // A description set directly on the Drive file (right-click -> File
+  // information -> Details -> Description) always wins, for when the
+  // filename alone isn't enough. Otherwise, derive a caption from the name.
+  const caption = (file.description && file.description.trim()) || humanCaption(file.name);
   return {
     id,
     filename: file.name,
+    caption,
     modifiedTime: file.modifiedTime,
     // Same 3-source fallback order used for event posters — the client
     // tries each in turn and only shows a placeholder if all three fail.
