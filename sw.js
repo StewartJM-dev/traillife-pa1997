@@ -1,6 +1,6 @@
 // Minimal service worker: cache the shell, always go to the network for the calendar.
-const CACHE = 'pa1997-v13';
-const SHELL = ['index.html','about.html','events.html','gallery.html','resources.html','contact.html','styles.css?v=12','script.js?v=12','image_0.png','image_7.png','images/hero-banner.jpg','images/hero-banner-mobile.jpg'];
+const CACHE = 'pa1997-v15';
+const SHELL = ['index.html','about.html','events.html','gallery.html','resources.html','contact.html','styles.css?v=13','script.js?v=13','image_0.png','image_7.png','images/hero-banner.jpg','images/hero-banner-mobile.jpg'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
