@@ -2,14 +2,14 @@
   "name": "Trail Life Troop PA-1997",
   "short_name": "Troop PA-1997",
   "description": "Trail Life Troop PA-1997 — Sweet Valley, PA",
-  "start_url": "/traillife-pa1997/index.html",
-  "scope": "/traillife-pa1997/",
+  "start_url": "/index.html",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#14291c",
   "theme_color": "#14291c",
   "orientation": "portrait-primary",
   "icons": [
-    { "src": "/traillife-pa1997/image_0.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/traillife-pa1997/image_7.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "/image_0.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/image_7.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ]
 }
