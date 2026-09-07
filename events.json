@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T03:42:28.349Z",
+  "generatedAt": "2026-09-07T04:14:48.146Z",
   "calendar": "Trail Life Troop PA-1997 Events",
   "events": [
     {
@@ -86,11 +86,14 @@
       "endDate": "2026-10-03",
       "startTime": "00:00",
       "endTime": "23:59",
-      "location": "Location TBD",
-      "description": "<p>Working date to be confirmed after the September 15 meeting. Joint Woodlands Trail, Navigators and Adventurers launch day. Woodlands: Science &amp; Technology Hit the Trail. Navigators/Adventurers: Model Rocketry Badge application. Time, location and rain plan TBD.</p>",
-      "firstParagraph": "Working date to be confirmed after the September 15 meeting. Joint Woodlands Trail, Navigators and Adventurers launch day. Woodlands: Science & Technology Hit the Trail. Navigators/Adventurers: Model Rocketry Badge appli",
-      "poster": null,
-      "updated": "2026-09-07T03:24:23.754Z"
+      "location": "Living Word Baptist Church, 40 Hess Lane, Sweet Valley, PA 18656",
+      "description": "<p>Tentative date: Saturday, October 3, 2026. Joint Woodlands Trail, Navigators and Adventurers rocket launch day at Living Word Baptist Church. Woodlands: Science &amp; Technology Hit the Trail. Navigators/Adventurers: Model Rocketry Badge application. Time and rain plan TBD.</p>",
+      "firstParagraph": "Tentative date: Saturday, October 3, 2026. Joint Woodlands Trail, Navigators and Adventurers rocket launch day at Living Word Baptist Church. Woodlands: Science & Technology Hit the Trail. Navigators/Adventurers: Model R",
+      "poster": {
+        "fileId": "1Y3AJOEvl6kbBOzjgQHQJUOAMohfFM358",
+        "filename": "Rocket Launch Hit the Trail - APPROVED.png"
+      },
+      "updated": "2026-09-07T03:54:10.196Z"
     },
     {
       "id": "pqp71jq8hnrc0pp1ggj6le4mo4",
@@ -275,8 +278,11 @@
       "location": "Stillwater Christian Church",
       "description": "<p>Operation Christmas Child packing event, led by Steph. Approved time: 9:00 a.m.–12:00 p.m.</p>",
       "firstParagraph": "Operation Christmas Child packing event, led by Steph. Approved time: 9:00 a.m.–12:00 p.m.",
-      "poster": null,
-      "updated": "2026-09-07T03:24:50.727Z"
+      "poster": {
+        "fileId": "1zKFC6hiHwTZePykhcJYzDyg-Ke_SCMXi",
+        "filename": "Operation Christmas Child - APPROVED.png"
+      },
+      "updated": "2026-09-07T03:48:15.880Z"
     },
     {
       "id": "nbir3hpccbhtcohmqlec46apts",
