@@ -1,25 +1,10 @@
-const CACHE_NAME = 'trailhead-pa1997-v1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/image_0.png',
-  '/image_1.jpeg',
-  '/image_2.jpeg',
-  '/image_3.jpeg',
-  '/image_4.jpeg',
-  '/image_5.jpeg'
-];
-
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-  );
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
-  );
+// Minimal service worker: cache the shell, always go to the network for the calendar.
+const CACHE = 'pa1997-v2';
+const SHELL = ['index.html','about.html','events.html','gallery.html','resources.html','contact.html','styles.css','script.js','image_0.png','image_7.png','images/hero-banner.jpg','images/hero-banner-mobile.jpg'];
+self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
+self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
+self.addEventListener('fetch', e => {
+  const url = new URL(e.request.url);
+  if (url.origin !== location.origin) return; // Google APIs, fonts, Drive: network only
+  e.respondWith(fetch(e.request).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put(e.request, copy)); return r; }).catch(() => caches.match(e.request)));
 });
