@@ -105,8 +105,12 @@ function fallbackBlock(text, cls) {
   d.textContent = text;
   return d;
 }
-function wireImageFallbacks(root) {
-  root.querySelectorAll('img.poster-img').forEach(img => {
+// Generic multi-source fallback wiring: any <img> with data-sources="a|b|c"
+// tries each URL in turn on error, and only once every source has failed
+// does it get replaced (via makeFallback) with a visible placeholder —
+// never left as a blank/broken image.
+function wireFallbackChain(root, selector, makeFallback) {
+  root.querySelectorAll(selector).forEach(img => {
     img.addEventListener('error', function onError() {
       const sources = (img.dataset.sources || '').split('|').filter(Boolean);
       const next = (parseInt(img.dataset.sourceIndex, 10) || 0) + 1;
@@ -115,10 +119,13 @@ function wireImageFallbacks(root) {
         img.src = sources[next];
       } else {
         img.removeEventListener('error', onError);
-        img.replaceWith(fallbackBlock(img.alt, img.dataset.fallbackClass));
+        img.replaceWith(makeFallback(img));
       }
     });
   });
+}
+function wireImageFallbacks(root) {
+  wireFallbackChain(root, 'img.poster-img', img => fallbackBlock(img.alt, img.dataset.fallbackClass));
 }
 
 /* ---------- Home page: next up on the trail ---------- */
@@ -221,6 +228,40 @@ async function loadUpcomingList() {
   list.innerHTML = html;
 }
 
+/* ---------- Gallery page: photos from the approved Drive folder ---------- */
+async function loadGalleryPhotos() {
+  const el = document.getElementById('gallery-grid');
+  if (!el) return;
+  try {
+    const res = await fetch('gallery.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('gallery.json request failed: ' + res.status);
+    const data = await res.json();
+    const photos = data.photos || [];
+    if (!photos.length) {
+      el.innerHTML = '<p class="detail">No photos yet — check back soon.</p>';
+      return;
+    }
+    el.innerHTML = photos.map(p => {
+      const sources = [p.thumbUrl, ...(p.fallbackUrls || [])].filter(Boolean).join('|');
+      const dateLabel = p.modifiedTime ? new Date(p.modifiedTime).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+      return '<figure>' +
+        '<img class="gallery-img" data-sources="' + escapeHtml(sources) + '" data-source-index="0" ' +
+        'src="' + escapeHtml(p.thumbUrl) + '" alt="Troop photo" loading="lazy">' +
+        (dateLabel ? '<figcaption>' + escapeHtml(dateLabel) + '</figcaption>' : '') +
+        '</figure>';
+    }).join('');
+    wireFallbackChain(el, 'img.gallery-img', img => {
+      const d = document.createElement('div');
+      d.className = 'gallery-fallback';
+      d.textContent = 'Photo unavailable';
+      return d;
+    });
+  } catch (err) {
+    console.error(err);
+    el.innerHTML = '<p class="detail">Couldn\'t load photos right now.</p>';
+  }
+}
+
 /* ---------- YouTube: latest uploads ---------- */
 async function loadYouTubeVideos() {
   const wrap = document.getElementById('youtube-videos');
@@ -294,5 +335,6 @@ window.addEventListener('load', () => {
   loadUpcomingList();
   loadPosterRail();
   loadFeatureList();
+  loadGalleryPhotos();
   loadYouTubeVideos();
 });
