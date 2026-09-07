@@ -17,6 +17,7 @@ const API_KEY = process.env.GCAL_API_KEY; // same key already used for Calendar/
 const GALLERY_FOLDER_ID = process.env.GALLERY_FOLDER_ID || '1hC0WYPxXNkGOAQFlJoRmhhYcL71Lhywl';
 const OUT_PATH = new URL('../gallery.json', import.meta.url);
 const MAX_PHOTOS = 60; // keep the page and the JSON file reasonably sized
+const MAX_HERO_PHOTOS = 8; // homepage hero rotation size
 
 const SUPPORTED_MIME_PREFIXES = ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'];
 
@@ -36,7 +37,7 @@ async function listFolderImages(folderId) {
     url.searchParams.set('q', q);
     url.searchParams.set('orderBy', 'modifiedTime desc');
     url.searchParams.set('pageSize', '100');
-    url.searchParams.set('fields', 'nextPageToken,files(id,name,mimeType,modifiedTime,description)');
+    url.searchParams.set('fields', 'nextPageToken,files(id,name,mimeType,modifiedTime,description,starred)');
     if (pageToken) url.searchParams.set('pageToken', pageToken);
     const res = await fetch(url);
     if (!res.ok) {
@@ -71,6 +72,7 @@ function transform(file) {
     filename: file.name,
     caption,
     modifiedTime: file.modifiedTime,
+    starred: !!file.starred,
     // Same 3-source fallback order used for event posters — the client
     // tries each in turn and only shows a placeholder if all three fail.
     thumbUrl: `https://lh3.googleusercontent.com/d/${id}=w800`,
@@ -85,12 +87,18 @@ function transform(file) {
 async function main() {
   const files = await listFolderImages(GALLERY_FOLDER_ID);
   const photos = files.map(transform);
+  // Hero rotation = photos starred in Drive (right-click a file -> Add to
+  // Starred, or the star icon in the preview). Falls back to nothing here;
+  // the client falls back to the newest photos if this list is empty, so
+  // the hero never breaks before anything has been starred.
+  const heroPhotos = photos.filter(p => p.starred).slice(0, MAX_HERO_PHOTOS);
 
   const output = {
     generatedAt: new Date().toISOString(),
     folder: 'Website Gallery - Approved Photos',
     folderId: GALLERY_FOLDER_ID,
     photos,
+    heroPhotos,
   };
 
   const next = JSON.stringify(output, null, 2) + '\n';
