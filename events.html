@@ -1,218 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events & Calendar - Trail Life PA-1997</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#14291c">
+<title>Events & Calendar — Trail Life Troop PA-1997</title>
+<meta name="description" content="Upcoming meetings, campouts, and the big events of the 2026–27 program year.">
+<meta property="og:title" content="Events & Calendar — Trail Life Troop PA-1997">
+<meta property="og:description" content="Upcoming meetings, campouts, and the big events of the 2026–27 program year.">
+<meta property="og:image" content="https://stewartjm-dev.github.io/traillife-pa1997/images/hero-banner.jpg">
+<meta property="og:url" content="https://stewartjm-dev.github.io/traillife-pa1997/events.html">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="image_0.png">
+<link rel="icon" href="image_0.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D1VYMBSYYM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-D1VYMBSYYM');</script>
+
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo-container">
-                <img src="image_7.png" alt="Trail Life Troop PA-1997 Logo">
-            </div>
-        </div>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="story.html">Our Story</a></li>
-            <li><a href="events.html" class="active">Events</a></li>
-            <li><a href="resources.html">Resources</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="newsletter.html">Newsletter</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li style="min-width: 120px;"><button id="installAppBtn">📱 Get App</button></li>
-        </ul>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="image_7.png" alt="">
+      <span class="brand-name">Troop PA-1997<small>Trail Life USA · Sweet Valley, PA</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="events.html" aria-current="page">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="contact.html#visit">Visit a meeting</a></li>
+        <li><button id="installAppBtn" class="btn btn-gold" type="button">Get the app</button></li>
+      </ul>
     </nav>
+  </div>
+</header>
+<main id="main">
 
-    <div class="container">
-        <section>
-            <h2>Upcoming Events & Calendar</h2>
-            
-            <div style="background: #f8f9fa; padding: 2rem; border-radius: 10px; margin-bottom: 2rem; text-align: center; border: 3px solid #2c5f2d;">
-                <h3 style="color: #2c5f2d; margin-bottom: 1rem; font-size: 1.5rem;">📆 Weekly Meetings</h3>
-                <p style="font-size: 1.2rem; margin-bottom: 0.5rem;"><strong>Every Tuesday at 6:00 PM</strong></p>
-                <p style="color: #666;">Living Word Baptist Church, 40 Hess Lane, Sweet Valley, PA</p>
-                <p style="margin-top: 1rem;"><strong>What to Bring:</strong> Bible, Trailman Handbook, Water Bottle</p>
-            </div>
+<section class="page-banner"><div class="wrap"><h1>Events &amp; calendar</h1><p>Weekly meetings, campouts, service days, and the big events of the 2026–27 program year.</p></div></section>
 
-            <h3 style="color: #2c5f2d; margin-bottom: 1.5rem; font-size: 1.8rem;">Next 2 Weeks</h3>
-            
-            <div id="next-two-weeks-events">
-                <p style="text-align: center; color: #666; padding: 2rem;">Loading events...</p>
-            </div>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>Coming up</h2><p>Everything on the troop calendar for the next few months. Meetings are Tuesdays, 6:00–7:30 PM at Living Word Baptist Church unless noted.</p></div>
+    <ul class="event-list" id="upcoming-list"><li class="month-head"><h3>Loading the calendar…</h3></li></ul>
+  </div>
+</section>
 
-            <h3 style="color: #2c5f2d; margin: 3rem 0 1.5rem 0; font-size: 1.8rem;">Weekend Adventures (Fridays-Sundays)</h3>
-            
-            <div id="weekend-events">
-                <p style="text-align: center; color: #666; padding: 2rem;">Loading weekend events...</p>
-            </div>
-
-            <h3 style="color: #2c5f2d; margin: 3rem 0 1.5rem 0; font-size: 1.8rem;">📅 Full Calendar</h3>
-            <div style="background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <iframe 
-                    src="https://calendar.google.com/calendar/embed?src=0ouijv00b6d6pv2d5oqqhh5rm1tdlee7%40import.calendar.google.com&ctz=America%2FNew_York" 
-                    style="border: 0; border-radius: 8px;" 
-                    width="100%" 
-                    height="600" 
-                    frameborder="0" 
-                    scrolling="no">
-                </iframe>
-            </div>
-        </section>
-
-        <section id="fundraiser" style="margin-top: 3rem;">
-            <h2>Current Fundraiser</h2>
-            <div style="background: linear-gradient(135deg, #A73638 0%, #d94447 100%); padding: 3rem; border-radius: 15px; color: white; box-shadow: 0 6px 12px rgba(0,0,0,0.2);">
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <h3 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">🎯 Support Our Troop!</h3>
-                    <p style="font-size: 1.3rem; opacity: 0.95;">Help us fund upcoming adventures and activities</p>
-                </div>
-                
-                <div style="background: white; color: #2c3e50; padding: 2.5rem; border-radius: 10px; max-width: 800px; margin: 0 auto;">
-                    <div style="text-align: center; margin-bottom: 2rem;">
-                        <img src="fundraiser-image.jpg" alt="Country Meats Fundraiser" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;">
-                    </div>
-                    
-                    <h4 style="color: #A73638; font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Support American Values, One Stick at a Time</h4>
-                    <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: #666;">Premium quality meat sticks that fuel adventures and build character!</p>
-                    
-                    <div style="margin: 2rem 0; padding: 1.5rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #2c5f2d;">
-                        <h5 style="color: #2c5f2d; margin-bottom: 1rem;">🛒 Shop Online - Open Year-Round!</h5>
-                        <p style="margin-bottom: 1rem;">Perfect for out-of-state family and friends! Orders ship directly to your door. Every purchase directly supports Troop PA-1997's mission to raise the next generation of American patriots.</p>
-                        <div style="text-align: center; margin-top: 1rem;">
-                            <a href="https://countrymeats.com/pages/seller-profile/trail-life-troop-pa-1997" target="_blank" style="display: inline-block; background: #2c5f2d; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 50px; font-weight: bold; transition: background 0.3s;">Order Online Now</a>
-                        </div>
-                    </div>
-                    
-                    <div style="margin: 2rem 0;">
-                        <h5 style="color: #2c5f2d; margin-bottom: 1rem;">🇺🇸 Your Support Funds Real Adventures:</h5>
-                        <ul style="line-height: 2; color: #555; padding-left: 1.5rem;">
-                            <li>Epic camping expeditions (Ark Encounter, Great Wolf Lodge, Gettysburg battlefields)</li>
-                            <li>Building projects that teach engineering and teamwork</li>
-                            <li>Outdoor skills equipment and campsite improvements</li>
-                            <li>Real-world adventures that forge character and create patriots</li>
-                        </ul>
-                    </div>
-                    
-                    <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: #fff3cd; border-radius: 8px;">
-                        <p style="margin: 0; font-weight: bold; color: #856404;">🏆 Every stick sold brings us closer to raising warriors for Christ and country!</p>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 2rem; text-align: center; font-size: 0.95rem; opacity: 0.9;">
-                    <p>All proceeds directly support Troop PA-1997 activities, equipment, and adventures!</p>
-                </div>
-            </div>
-        </section>
+<section class="section poster-band">
+  <div class="wrap">
+    <div class="section-head"><h2>The big events</h2><p>Mark these now. Details and sign-ups go out in Trail Blazer Weekly and on Facebook.</p></div>
+    <div class="feature-list" style="color:var(--ink)">
+      <div class="feature" id="trail-life-sunday">
+        <figure><img src="https://drive.google.com/thumbnail?id=1m0V24eQgXFlRAnWr2cfRLdDC9XcAo2rg&sz=w1000" data-fallback="images/posters/trail-life-sunday.png" alt="Trail Life Sunday" loading="lazy"></figure>
+        <div class="feature-body"><div class="date">Sunday, Sept 20</div><h3>Trail Life Sunday</h3><p>Trailmen in uniform at the morning and evening services at Living Word Baptist Church.</p></div>
+      </div>
+      <div class="feature" id="court-of-honor">
+        <figure><img src="https://drive.google.com/thumbnail?id=1VcOsU_uY091ai5WT43vkshsRkUyj_um5&sz=w1000" data-fallback="images/posters/court-of-honor.png" alt="Court of Honor" loading="lazy"></figure>
+        <div class="feature-body"><div class="date">Late September</div><h3>Court of Honor</h3><p>Outdoor evening awards ceremony under the flags. Date announced soon.</p></div>
+      </div>
+      <div class="feature" id="ultimate-manhunt">
+        <figure><img src="https://drive.google.com/thumbnail?id=1zmldYiJkZdzMBCf2RmxkfL45LkloDhYC&sz=w1000" data-fallback="images/posters/ultimate-manhunt.png" alt="Ultimate Manhunt" loading="lazy"></figure>
+        <div class="feature-body"><div class="date">Friday, Oct 30</div><h3>Ultimate Manhunt</h3><p>Night on the trail: outdoor manhunt for older patrols, Woodlands Shadow Hunt inside, campfire and hot dogs for everyone.</p></div>
+      </div>
+      <div class="feature" id="veterans-breakfast">
+        <figure><img src="https://drive.google.com/thumbnail?id=1kqBkhTlW2yXsjj-_jCV0mnp8QPOj1EnW&sz=w1000" data-fallback="images/posters/veterans-breakfast.png" alt="Veterans Breakfast" loading="lazy"></figure>
+        <div class="feature-body"><div class="date">Saturday, Nov 14</div><h3>Veterans Breakfast</h3><p>Trailmen serve breakfast to the veterans of our community. RSVP by November 7.</p></div>
+      </div>
+      <div class="feature" id="iron-trail-chef">
+        <figure><img src="https://drive.google.com/thumbnail?id=19F2udncvoVjZ8a3Ipph8ib9vq1f7WA9J&sz=w1000" data-fallback="images/posters/iron-trail-chef.png" alt="Iron Trail Chef" loading="lazy"></figure>
+        <div class="feature-body"><div class="date">Saturday, Dec 5</div><h3>Iron Trail Chef &amp; Christmas Party</h3><p>Parent–Trailman Dutch oven showdown with one mystery ingredient, followed by the troop Christmas party.</p></div>
+      </div>
+      <div class="feature" id="klondike">
+        <figure><img src="https://drive.google.com/thumbnail?id=1d4t-UHVrY45uTASZRug_sgkGuStxK-xp&sz=w1000" data-fallback="images/posters/klondike.png" alt="Klondike Expedition" loading="lazy"></figure>
+        <div class="feature-body"><div class="date">Jan 29–31, 2027</div><h3>Klondike Expedition</h3><p>Navigators and Adventurers haul a boy-built sled through a winter skills challenge near Williamsport.</p></div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <footer>
-        <p>&copy; 2025 Trail Life Troop PA-1997. All rights reserved.</p>
-        <p>Proudly sponsored by <a href="https://www.lwbcsv.com" target="_blank">Living Word Baptist Church</a></p>
-        <p>Part of <a href="https://www.traillife.org" target="_blank">Trail Life USA</a></p>
-    </footer>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>Full calendar</h2><p>Add it to your own phone or computer so troop events show up next to everything else.</p></div>
+    <div class="cal-embed">
+      <iframe title="Trail Life Troop PA-1997 calendar" src="https://calendar.google.com/calendar/embed?src=8187256076839d823a752f8c6d11bb571899eabed453ddd7244cd412fe39406b%40group.calendar.google.com&ctz=America%2FNew_York&mode=AGENDA&showTitle=0&showPrint=0&showTabs=1&showCalendars=0&bgcolor=%23ffffff" loading="lazy"></iframe>
+    </div>
+    <div class="btn-row" style="margin-top:1rem">
+      <a class="btn btn-outline" href="https://calendar.google.com/calendar/u/0/r?cid=8187256076839d823a752f8c6d11bb571899eabed453ddd7244cd412fe39406b%40group.calendar.google.com" target="_blank" rel="noopener">Add to Google Calendar</a>
+      <a class="btn btn-outline" href="https://calendar.google.com/calendar/ical/8187256076839d823a752f8c6d11bb571899eabed453ddd7244cd412fe39406b%40group.calendar.google.com/public/basic.ics">Subscribe (iPhone / Outlook)</a>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
-    <script>
-    const CALENDAR_ID = '0ouijv00b6d6pv2d5oqqhh5rm1tdlee7@import.calendar.google.com';
-    const API_KEY = 'AIzaSyAO1G7TptJAuy9UhBl7J5IzZHlr-XNgRn8';
-
-    function formatEventDate(startDate, hasTime) {
-        return startDate.toLocaleDateString('en-US', { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric',
-            hour: hasTime ? 'numeric' : undefined,
-            minute: hasTime ? '2-digit' : undefined
-        });
-    }
-
-    function createEventHTML(event) {
-        const startDate = new Date(event.start.dateTime || event.start.date);
-        const formattedDate = formatEventDate(startDate, !!event.start.dateTime);
-        
-        return `
-            <div class="calendar-event">
-                <div class="date">📅 ${formattedDate}</div>
-                <h3>${event.summary}</h3>
-                <p>${event.description || 'See full calendar for details'}</p>
-                ${event.location ? `<p><strong>Location:</strong> ${event.location}</p>` : ''}
-            </div>
-        `;
-    }
-
-    async function loadNextTwoWeeksEvents() {
-        const now = new Date();
-        const twoWeeksLater = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
-        const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${now.toISOString()}&timeMax=${twoWeeksLater.toISOString()}&orderBy=startTime&singleEvents=true&maxResults=50`;
-        
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            
-            const eventsContainer = document.getElementById('next-two-weeks-events');
-            eventsContainer.innerHTML = '';
-            
-            if (data.items && data.items.length > 0) {
-                data.items.forEach(event => {
-                    eventsContainer.innerHTML += createEventHTML(event);
-                });
-            } else {
-                eventsContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">No events scheduled for the next 2 weeks. Check back soon!</p>';
-            }
-        } catch (error) {
-            console.error('Error loading events:', error);
-            eventsContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Unable to load events. Please check the calendar below.</p>';
-        }
-    }
-
-    async function loadWeekendEvents() {
-        const now = new Date();
-        const oneMonthLater = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
-        const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${now.toISOString()}&timeMax=${oneMonthLater.toISOString()}&orderBy=startTime&singleEvents=true&maxResults=50`;
-        
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            
-            const eventsContainer = document.getElementById('weekend-events');
-            eventsContainer.innerHTML = '';
-            
-            if (data.items && data.items.length > 0) {
-                // Filter for Friday (5), Saturday (6), Sunday (0)
-                const weekendEvents = data.items.filter(event => {
-                    const eventDate = new Date(event.start.dateTime || event.start.date);
-                    const dayOfWeek = eventDate.getDay();
-                    return dayOfWeek === 0 || dayOfWeek === 5 || dayOfWeek === 6;
-                });
-                
-                if (weekendEvents.length > 0) {
-                    weekendEvents.forEach(event => {
-                        eventsContainer.innerHTML += createEventHTML(event);
-                    });
-                } else {
-                    eventsContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">No weekend adventures scheduled yet. Check back soon!</p>';
-                }
-            } else {
-                eventsContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">No weekend adventures scheduled yet. Check back soon!</p>';
-            }
-        } catch (error) {
-            console.error('Error loading weekend events:', error);
-            eventsContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Unable to load events. Please check the calendar below.</p>';
-        }
-    }
-
-    // Load both event sections when page loads
-    window.addEventListener('load', () => {
-        loadNextTwoWeeksEvents();
-        loadWeekendEvents();
-    });
-    </script>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <h3>Trail Life Troop PA-1997</h3>
+      <p>Chartered June 7, 2024 at Living Word Baptist Church. A Christ-centered outdoor adventure program for boys and young men, ages 5–18.</p>
+      <p><a href="https://www.facebook.com/share/g/19nwSQXx7a/" target="_blank" rel="noopener">Follow us on Facebook</a></p>
+    </div>
+    <div>
+      <h3>Meetings</h3>
+      <p>Every Tuesday, 6:00–7:30 PM<br>Living Word Baptist Church<br>40 Hess Lane, Sweet Valley, PA 18656</p>
+      <p><a href="https://maps.google.com/?q=40+Hess+Lane,+Sweet+Valley,+PA" target="_blank" rel="noopener">Directions</a></p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <ul>
+        <li><a href="tel:570-316-7600">570-316-7600</a> (call or text)</li>
+        <li><a href="mailto:TLtroopPA1997@yahoo.com">TLtroopPA1997@yahoo.com</a></li>
+        <li><a href="https://www.traillifeusa.com/find-a-troop/" target="_blank" rel="noopener">Register with Trail Life USA</a></li>
+        <li><a href="https://www.lwbcsv.com" target="_blank" rel="noopener">Living Word Baptist Church</a></li>
+      </ul>
+    </div>
+    <div class="fine">&copy; 2026 Trail Life Troop PA-1997. Trail Life USA and Walk Worthy are trademarks of Trail Life USA. Site built and maintained by the troop.</div>
+  </div>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
