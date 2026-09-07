@@ -1,19 +1,53 @@
 {
-  "generatedAt": "2026-09-07T12:59:08.851Z",
+  "generatedAt": "2026-09-07T13:01:21.617Z",
   "folder": "Website Gallery - Approved Photos",
   "folderId": "1hC0WYPxXNkGOAQFlJoRmhhYcL71Lhywl",
-  "photos": [],
+  "photos": [
+    {
+      "id": "1eMAW3T1YW14JztG4XVBwEy34zeYry78x",
+      "filename": "Fire Skills - DSC_1122.JPG",
+      "modifiedTime": "2026-09-07T04:50:04.662Z",
+      "thumbUrl": "https://lh3.googleusercontent.com/d/1eMAW3T1YW14JztG4XVBwEy34zeYry78x=w800",
+      "fullUrl": "https://lh3.googleusercontent.com/d/1eMAW3T1YW14JztG4XVBwEy34zeYry78x=w1920",
+      "fallbackUrls": [
+        "https://drive.google.com/thumbnail?id=1eMAW3T1YW14JztG4XVBwEy34zeYry78x&sz=w1600",
+        "https://drive.google.com/uc?export=view&id=1eMAW3T1YW14JztG4XVBwEy34zeYry78x"
+      ]
+    },
+    {
+      "id": "1e6MCvwa70JfkH5YP8AxvU0CB4LOiyev0",
+      "filename": "Outdoor Challenge - DSC_1136.JPG",
+      "modifiedTime": "2026-09-07T04:49:55.256Z",
+      "thumbUrl": "https://lh3.googleusercontent.com/d/1e6MCvwa70JfkH5YP8AxvU0CB4LOiyev0=w800",
+      "fullUrl": "https://lh3.googleusercontent.com/d/1e6MCvwa70JfkH5YP8AxvU0CB4LOiyev0=w1920",
+      "fallbackUrls": [
+        "https://drive.google.com/thumbnail?id=1e6MCvwa70JfkH5YP8AxvU0CB4LOiyev0&sz=w1600",
+        "https://drive.google.com/uc?export=view&id=1e6MCvwa70JfkH5YP8AxvU0CB4LOiyev0"
+      ]
+    },
+    {
+      "id": "1rtaD0rBX4JjP8AXsgeITFTAL1FJJW1Cx",
+      "filename": "Archery Action - DSC_1059.JPG",
+      "modifiedTime": "2026-09-07T04:49:47.599Z",
+      "thumbUrl": "https://lh3.googleusercontent.com/d/1rtaD0rBX4JjP8AXsgeITFTAL1FJJW1Cx=w800",
+      "fullUrl": "https://lh3.googleusercontent.com/d/1rtaD0rBX4JjP8AXsgeITFTAL1FJJW1Cx=w1920",
+      "fallbackUrls": [
+        "https://drive.google.com/thumbnail?id=1rtaD0rBX4JjP8AXsgeITFTAL1FJJW1Cx&sz=w1600",
+        "https://drive.google.com/uc?export=view&id=1rtaD0rBX4JjP8AXsgeITFTAL1FJJW1Cx"
+      ]
+    }
+  ],
   "_debug": {
     "getTest": {
-      "status": 403,
-      "ok": false,
-      "body": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API drive method google.apps.drive.v3.DriveFiles.Get are blocked.\",\n    \"errors\": [\n      {\n        \"message\": \"Requests to this API drive method google.apps.drive.v3.DriveFiles.Get are blocked.\",\n        \"domain\": \"global\",\n        \"reason\": \"forbidden\"\n      }\n    ],\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_SERVICE_BLOCKED\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"service\": \"drive.googleapis.com\",\n          \"methodName\": \"google.apps.drive.v3.DriveFiles.Get\",\n          \"apiName\": \"drive\",\n          \"consumer\": \"projects/279800959701\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.LocalizedMessage\",\n        \"locale\": \"en-US\",\n        \"message\": \"Requests to this API drive method google.apps.drive.v3.DriveFiles.Get are blocked.\"\n      }\n    ]\n  }\n}\n"
+      "status": 200,
+      "ok": true,
+      "body": "{\n  \"id\": \"1rtaD0rBX4JjP8AXsgeITFTAL1FJJW1Cx\",\n  \"name\": \"Archery Action - DSC_1059.JPG\",\n  \"mimeType\": \"image/jpeg\"\n}\n"
     },
     "listTest": {
-      "status": 403,
-      "ok": false,
+      "status": 200,
+      "ok": true,
       "query": "'1hC0WYPxXNkGOAQFlJoRmhhYcL71Lhywl' in parents and (mimeType = 'image/jpeg' or mimeType = 'image/png' or mimeType = 'image/webp' or mimeType = 'image/heic' or mimeType = 'image/heif') and trashed = false",
-      "body": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API drive method google.apps.drive.v3.DriveFiles.List are blocked.\",\n    \"errors\": [\n      {\n        \"message\": \"Requests to this API drive method google.apps.drive.v3.DriveFiles.List are blocked.\",\n        \"domain\": \"global\",\n        \"reason\": \"forbidden\"\n      }\n    ],\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_SERVICE_BLOCKED\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"methodName\": \"google.apps.drive.v3.DriveFiles.List\",\n          \"service\": \"drive.googleapis.com\",\n          \"consumer\": \"projects/279800959701\",\n          \"apiName\": \"drive\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.LocalizedMessage\",\n        \"locale\": \"en-US\",\n        \"message\": \"Requests to this API drive method google.apps.drive.v3.DriveFiles.List are blocked.\"\n      }\n    ]\n  }\n}\n"
+      "body": "{\n  \"files\": [\n    {\n      \"mimeType\": \"image/jpeg\",\n      \"id\": \"1eMAW3T1YW14JztG4XVBwEy34zeYry78x\",\n      \"name\": \"Fire Skills - DSC_1122.JPG\",\n      \"modifiedTime\": \"2026-09-07T04:50:04.662Z\"\n    },\n    {\n      \"mimeType\": \"image/jpeg\",\n      \"id\": \"1e6MCvwa70JfkH5YP8AxvU0CB4LOiyev0\",\n      \"name\": \"Outdoor Challenge - DSC_1136.JPG\",\n      \"modifiedTime\": \"2026-09-07T04:49:55.256Z\"\n    },\n    {\n      \"mimeType\": \"image/jpeg\",\n      \"id\": \"1rtaD0rBX4JjP8AXsgeITFTAL1FJJW1Cx\",\n      \"name\": \"Archery Action - DSC_1059.JPG\",\n      \"modifiedTime\": \"2026-09-07T04:49:47.599Z\"\n    }\n  ]\n}\n"
     }
   }
 }
