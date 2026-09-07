@@ -231,11 +231,23 @@ async function loadYouTubeVideos() {
         const t = escapeHtml(it.snippet.title);
         const th = it.snippet.thumbnails || {};
         const thumb = (th.medium || th.default || {}).url || '';
-        return '<a class="yt-card" href="https://www.youtube.com/watch?v=' + v + '" target="_blank" rel="noopener">' +
-          '<img src="' + thumb + '" alt="" loading="lazy"><span>' + t + '</span></a>';
+        return '<button type="button" class="yt-card" data-video-id="' + v + '" aria-label="Play: ' + t + '">' +
+          '<span class="yt-thumb-wrap"><img src="' + thumb + '" alt="" loading="lazy"><span class="yt-play" aria-hidden="true">&#9658;</span></span>' +
+          '<span class="yt-title">' + t + '</span></button>';
       }).join('') + '</div>';
     }
     wrap.innerHTML = html;
+    wrap.querySelectorAll('.yt-card').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const vid = btn.dataset.videoId;
+        const holder = document.createElement('div');
+        holder.className = 'video';
+        holder.innerHTML = '<iframe title="' + btn.getAttribute('aria-label') +
+          '" src="https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1" ' +
+          'allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+        btn.replaceWith(holder);
+      }, { once: true });
+    });
   } catch (err) {
     console.error(err);
     wrap.innerHTML = '<p class="detail">Couldn\'t load the latest videos right now. <a href="' +
