@@ -86,9 +86,18 @@ function posterImg(ev, extraClass) {
   if (!ev.poster) {
     return '<div class="poster-fallback' + (extraClass ? ' ' + extraClass : '') + '">' + escapeHtml(ev.displayTitle) + '</div>';
   }
-  const src = 'https://drive.google.com/thumbnail?id=' + ev.poster.fileId + '&sz=w1000';
+  const id = ev.poster.fileId;
+  // Try a chain of Drive image URLs — some render more reliably than others
+  // depending on the file's sharing state and Drive's caching. If every
+  // source fails, wireImageFallbacks() below swaps in a text placeholder.
+  const sources = [
+    'https://lh3.googleusercontent.com/d/' + id + '=w1200',
+    'https://drive.google.com/thumbnail?id=' + id + '&sz=w1200',
+    'https://drive.google.com/uc?export=view&id=' + id,
+  ];
   return '<img class="poster-img" data-fallback-class="' + escapeHtml(extraClass || '') + '" ' +
-    'src="' + src + '" alt="' + escapeHtml(ev.displayTitle) + '" loading="lazy">';
+    'data-sources="' + escapeHtml(sources.join('|')) + '" data-source-index="0" ' +
+    'src="' + sources[0] + '" alt="' + escapeHtml(ev.displayTitle) + '" loading="lazy">';
 }
 function fallbackBlock(text, cls) {
   const d = document.createElement('div');
@@ -98,7 +107,17 @@ function fallbackBlock(text, cls) {
 }
 function wireImageFallbacks(root) {
   root.querySelectorAll('img.poster-img').forEach(img => {
-    img.addEventListener('error', () => img.replaceWith(fallbackBlock(img.alt, img.dataset.fallbackClass)), { once: true });
+    img.addEventListener('error', function onError() {
+      const sources = (img.dataset.sources || '').split('|').filter(Boolean);
+      const next = (parseInt(img.dataset.sourceIndex, 10) || 0) + 1;
+      if (next < sources.length) {
+        img.dataset.sourceIndex = String(next);
+        img.src = sources[next];
+      } else {
+        img.removeEventListener('error', onError);
+        img.replaceWith(fallbackBlock(img.alt, img.dataset.fallbackClass));
+      }
+    });
   });
 }
 
