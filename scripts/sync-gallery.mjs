@@ -68,44 +68,7 @@ function transform(file) {
 }
 
 async function main() {
-  // TEMPORARY diagnostics: run both a files.get (known ID) and a files.list
-  // (folder query) independently, and always write what happened into
-  // gallery.json under _debug — even on success — so the result can be
-  // inspected without needing raw Action logs. Remove once the gallery
-  // pipeline is confirmed working end to end.
-  const debug = { getTest: null, listTest: null };
-
-  try {
-    const getUrl = new URL('https://www.googleapis.com/drive/v3/files/1rtaD0rBX4JjP8AXsgeITFTAL1FJJW1Cx');
-    getUrl.searchParams.set('key', API_KEY);
-    getUrl.searchParams.set('fields', 'id,name,mimeType');
-    const getRes = await fetch(getUrl);
-    debug.getTest = { status: getRes.status, ok: getRes.ok, body: await getRes.text() };
-  } catch (e) {
-    debug.getTest = { error: String(e) };
-  }
-
-  let files = [];
-  try {
-    const mimeClause = SUPPORTED_MIME_PREFIXES.map(m => `mimeType = '${m}'`).join(' or ');
-    const q = `'${GALLERY_FOLDER_ID}' in parents and (${mimeClause}) and trashed = false`;
-    const listUrl = new URL('https://www.googleapis.com/drive/v3/files');
-    listUrl.searchParams.set('key', API_KEY);
-    listUrl.searchParams.set('q', q);
-    listUrl.searchParams.set('orderBy', 'modifiedTime desc');
-    listUrl.searchParams.set('pageSize', '100');
-    listUrl.searchParams.set('fields', 'nextPageToken,files(id,name,mimeType,modifiedTime)');
-    const listRes = await fetch(listUrl);
-    const bodyText = await listRes.text();
-    debug.listTest = { status: listRes.status, ok: listRes.ok, query: q, body: bodyText.slice(0, 2000) };
-    if (listRes.ok) {
-      const data = JSON.parse(bodyText);
-      files = (data.files || []).slice(0, MAX_PHOTOS);
-    }
-  } catch (e) {
-    debug.listTest = { error: String(e) };
-  }
-
+  const files = await listFolderImages(GALLERY_FOLDER_ID);
   const photos = files.map(transform);
 
   const output = {
@@ -113,13 +76,20 @@ async function main() {
     folder: 'Website Gallery - Approved Photos',
     folderId: GALLERY_FOLDER_ID,
     photos,
-    _debug: debug,
   };
 
-  // Always write during diagnostics, regardless of whether content changed,
-  // so every run leaves a fresh trail.
-  await writeFile(OUT_PATH, JSON.stringify(output, null, 2) + '\n', 'utf8');
-  console.log(`Wrote ${photos.length} photos to gallery.json (diagnostic mode)`);
+  const next = JSON.stringify(output, null, 2) + '\n';
+  let prev = '';
+  try { prev = await readFile(OUT_PATH, 'utf8'); } catch { /* first run */ }
+
+  const stripTimestamp = s => s.replace(/"generatedAt":\s*"[^"]*",?\n?/, '');
+  if (stripTimestamp(prev) === stripTimestamp(next)) {
+    console.log('No gallery changes since last sync.');
+    return;
+  }
+
+  await writeFile(OUT_PATH, next, 'utf8');
+  console.log(`Wrote ${photos.length} photos to gallery.json`);
 }
 
 const isMain = process.argv[1] && import.meta.url === `file://${process.argv[1]}`;
