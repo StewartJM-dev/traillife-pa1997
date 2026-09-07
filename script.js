@@ -144,12 +144,18 @@ async function loadPosterRail() {
   if (!el) return;
   const events = await loadEvents();
   const withPosters = events.filter(e => e.poster && !e.cancelled).slice(0, 6);
-  if (!withPosters.length) { el.closest('section').style.display = 'none'; return; }
-  el.innerHTML = withPosters.map(ev => `
+  const cards = withPosters.map(ev => `
       <a class="poster" href="events.html#ev-${ev.id}">
         <figure>${posterImg(ev)}</figure>
         <div class="poster-meta"><div class="date">${escapeHtml(fmtDateShort(ev.date))}</div><h3>${escapeHtml(ev.displayTitle)}${titleTag(ev)}</h3><p>${escapeHtml(ev.firstParagraph || '')}</p></div>
       </a>`).join('');
+  const moreCard = `
+      <a class="poster poster-more" href="events.html">
+        <div class="poster-more-arrow">&rarr;</div>
+        <h3>See all events</h3>
+        <p>The full calendar — meetings, campouts, and everything else coming up.</p>
+      </a>`;
+  el.innerHTML = cards + moreCard;
   wireImageFallbacks(el);
 }
 
