@@ -129,6 +129,20 @@ function wireImageFallbacks(root) {
 }
 
 /* ---------- Home page: next up on the trail ---------- */
+function daysUntil(dateStr) {
+  const target = new Date(dateStr + 'T00:00:00');
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  return Math.round((target - today) / 86400000);
+}
+function countdownHtml(ev) {
+  if (ev.cancelled) return '';
+  const days = daysUntil(ev.date);
+  if (days > 1) return '<div class="countdown"><span class="countdown-num">' + days + '</span><span class="countdown-label">days to go</span></div>';
+  if (days === 1) return '<div class="countdown"><span class="countdown-num">1</span><span class="countdown-label">day to go</span></div>';
+  if (days === 0) return '<div class="countdown countdown-today"><span class="countdown-num">Today!</span></div>';
+  return '';
+}
+
 async function loadThisWeek() {
   const meetEl = document.getElementById('next-meeting');
   const eventEl = document.getElementById('next-event');
@@ -153,6 +167,7 @@ async function loadThisWeek() {
     if (big) {
       eventEl.innerHTML =
         '<div class="kicker">Next special event</div>' +
+        countdownHtml(big) +
         '<h3>' + escapeHtml(big.displayTitle) + titleTag(big) + '</h3>' +
         '<div class="when">' + escapeHtml(whenText(big)) + '</div>' +
         '<div class="detail">' + safeDescription(big.description) +
@@ -320,6 +335,53 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }
 let deferredInstall = null;
+/* ---------- Home page: rotating hero photos ---------- */
+async function loadHeroSlideshow() {
+  const layer = document.getElementById('hero-photo-layer');
+  const fallback = document.getElementById('hero-fallback-img');
+  if (!layer) return;
+  try {
+    const res = await fetch('gallery.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('gallery.json request failed: ' + res.status);
+    const data = await res.json();
+    const photos = (data.photos || []).slice(0, 8);
+    if (!photos.length) return; // keep the static branded banner showing
+
+    // Preload everything first so the crossfade never shows a blank frame,
+    // and so one broken Drive image can't break the whole slideshow.
+    const loaded = await Promise.all(photos.map(p => new Promise(resolve => {
+      const img = new Image();
+      img.onload = () => resolve(p);
+      img.onerror = () => resolve(null);
+      img.src = p.fullUrl;
+    })));
+    const usable = loaded.filter(Boolean);
+    if (!usable.length) return; // every photo failed to load — keep the fallback banner
+
+    usable.forEach((p, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'hero-slide' + (i === 0 ? ' is-active' : '');
+      slide.style.backgroundImage = 'url(' + p.fullUrl + ')';
+      layer.appendChild(slide);
+    });
+    if (fallback) fallback.classList.add('is-hidden');
+    document.getElementById('hero').classList.add('hero-live');
+
+    if (usable.length > 1) {
+      const slides = layer.querySelectorAll('.hero-slide');
+      let idx = 0;
+      setInterval(() => {
+        slides[idx].classList.remove('is-active');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add('is-active');
+      }, 6000);
+    }
+  } catch (err) {
+    console.error(err);
+    // leave the static fallback banner in place
+  }
+}
+
 window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault();
   deferredInstall = e;
@@ -336,5 +398,6 @@ window.addEventListener('load', () => {
   loadPosterRail();
   loadFeatureList();
   loadGalleryPhotos();
+  loadHeroSlideshow();
   loadYouTubeVideos();
 });
