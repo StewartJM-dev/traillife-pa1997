@@ -392,12 +392,12 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .site-footer p { font-size: .95rem; }
 .site-footer .fine { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,.12); padding-top: 1.25rem; margin-top: .5rem; font-size: .85rem; color: rgba(255,255,255,.6); }
 
-.social-link { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.1); padding: .55rem 1rem; border-radius: 999px; font-weight: 600; font-size: .95rem !important; transition: background .15s, transform .15s; }
-.social-link:hover { background: #1877F2; transform: translateY(-1px); }
+.social-link { display: inline-flex; align-items: center; gap: .5rem; background: #0866FF; color: #fff; padding: .55rem 1rem; border-radius: 999px; font-weight: 600; font-size: .95rem !important; transition: background .15s, transform .15s; box-shadow: 0 2px 8px rgba(8,102,255,.35); }
+.social-link:hover { background: #2f7dff; transform: translateY(-1px); }
 .social-link svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
 
 .credit-badge { display: inline-flex; align-items: center; gap: .4rem; font-weight: 600; }
-.credit-badge .mark { width: 24px; height: 24px; object-fit: contain; flex-shrink: 0; }
+.credit-badge .mark { height: 40px; width: auto; flex-shrink: 0; }
 
 .skip { position: absolute; left: -999px; top: 0; background: var(--gold); color: var(--pine); padding: .5rem 1rem; z-index: 100; }
 .skip:focus { left: 1rem; top: 1rem; }
