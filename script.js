@@ -9,6 +9,9 @@ const SITE_CONFIG = {
   calendarId: '8187256076839d823a752f8c6d11bb571899eabed453ddd7244cd412fe39406b@group.calendar.google.com',
   apiKey: 'AIzaSyAO1G7TptJAuy9UhBl7J5IzZHlr-XNgRn8',
   timeZone: 'America/New_York',
+  // Troop YouTube channel — the site shows the latest uploads automatically.
+  youtubeChannelId: 'UCR1MRDtKONNbhKUNqIq99CA',
+  youtubeChannelUrl: 'https://www.youtube.com/@traillifetrooppa1997',
   // Events whose title starts with any of these are leadership-only and never shown on the site.
   hiddenPrefixes: ['Church Use', 'Leadership', 'Internal', 'Committee'],
   // Titles that contain these words are treated as internal to-dos, not family events.
@@ -201,6 +204,49 @@ function fallbackBlock(text) {
   return d;
 }
 
+/* ---------- Gallery page: latest YouTube videos ---------- */
+async function loadYouTubeVideos() {
+  const wrap = document.getElementById('youtube-videos');
+  if (!wrap) return;
+  try {
+    // Standard YouTube convention: a channel's "uploads" playlist ID is its
+    // channel ID with the UC prefix swapped for UU. Avoids a second API call.
+    const uploadsPlaylist = SITE_CONFIG.youtubeChannelId.replace(/^UC/, 'UU');
+    const url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=8&playlistId=' +
+      uploadsPlaylist + '&key=' + SITE_CONFIG.apiKey;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('YouTube request failed: ' + res.status);
+    const data = await res.json();
+    const items = (data.items || [])
+      .filter(it => it.snippet && it.snippet.resourceId && it.snippet.resourceId.videoId)
+      .sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt));
+
+    if (!items.length) { wrap.innerHTML = ''; return; }
+
+    const [featured, ...rest] = items;
+    const fid = featured.snippet.resourceId.videoId;
+    let html = '<div class="video"><iframe title="' + escapeHtml(featured.snippet.title) +
+      '" src="https://www.youtube-nocookie.com/embed/' + fid +
+      '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>';
+
+    if (rest.length) {
+      html += '<div class="yt-grid">' + rest.map(it => {
+        const v = it.snippet.resourceId.videoId;
+        const t = escapeHtml(it.snippet.title);
+        const th = it.snippet.thumbnails || {};
+        const thumb = (th.medium || th.default || {}).url || '';
+        return '<a class="yt-card" href="https://www.youtube.com/watch?v=' + v + '" target="_blank" rel="noopener">' +
+          '<img src="' + thumb + '" alt="" loading="lazy"><span>' + t + '</span></a>';
+      }).join('') + '</div>';
+    }
+    wrap.innerHTML = html;
+  } catch (err) {
+    console.error(err);
+    wrap.innerHTML = '<p class="detail">Couldn\'t load the latest videos right now. <a href="' +
+      SITE_CONFIG.youtubeChannelUrl + '" target="_blank" rel="noopener">Visit the channel</a>.</p>';
+  }
+}
+
 /* ---------- PWA ---------- */
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
@@ -216,4 +262,4 @@ window.addEventListener('beforeinstallprompt', e => {
   }
 });
 
-window.addEventListener('load', () => { loadThisWeek(); loadUpcomingList(); });
+window.addEventListener('load', () => { loadThisWeek(); loadUpcomingList(); loadYouTubeVideos(); });
