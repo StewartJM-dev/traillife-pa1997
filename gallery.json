@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T13:01:21.617Z",
+  "generatedAt": "2026-09-07T13:02:22.689Z",
   "folder": "Website Gallery - Approved Photos",
   "folderId": "1hC0WYPxXNkGOAQFlJoRmhhYcL71Lhywl",
   "photos": [
@@ -36,18 +36,5 @@
         "https://drive.google.com/uc?export=view&id=1rtaD0rBX4JjP8AXsgeITFTAL1FJJW1Cx"
       ]
     }
-  ],
-  "_debug": {
-    "getTest": {
-      "status": 200,
-      "ok": true,
-      "body": "{\n  \"id\": \"1rtaD0rBX4JjP8AXsgeITFTAL1FJJW1Cx\",\n  \"name\": \"Archery Action - DSC_1059.JPG\",\n  \"mimeType\": \"image/jpeg\"\n}\n"
-    },
-    "listTest": {
-      "status": 200,
-      "ok": true,
-      "query": "'1hC0WYPxXNkGOAQFlJoRmhhYcL71Lhywl' in parents and (mimeType = 'image/jpeg' or mimeType = 'image/png' or mimeType = 'image/webp' or mimeType = 'image/heic' or mimeType = 'image/heif') and trashed = false",
-      "body": "{\n  \"files\": [\n    {\n      \"mimeType\": \"image/jpeg\",\n      \"id\": \"1eMAW3T1YW14JztG4XVBwEy34zeYry78x\",\n      \"name\": \"Fire Skills - DSC_1122.JPG\",\n      \"modifiedTime\": \"2026-09-07T04:50:04.662Z\"\n    },\n    {\n      \"mimeType\": \"image/jpeg\",\n      \"id\": \"1e6MCvwa70JfkH5YP8AxvU0CB4LOiyev0\",\n      \"name\": \"Outdoor Challenge - DSC_1136.JPG\",\n      \"modifiedTime\": \"2026-09-07T04:49:55.256Z\"\n    },\n    {\n      \"mimeType\": \"image/jpeg\",\n      \"id\": \"1rtaD0rBX4JjP8AXsgeITFTAL1FJJW1Cx\",\n      \"name\": \"Archery Action - DSC_1059.JPG\",\n      \"modifiedTime\": \"2026-09-07T04:49:47.599Z\"\n    }\n  ]\n}\n"
-    }
-  }
+  ]
 }
