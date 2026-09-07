@@ -243,11 +243,11 @@ async function loadGalleryPhotos() {
     }
     el.innerHTML = photos.map(p => {
       const sources = [p.thumbUrl, ...(p.fallbackUrls || [])].filter(Boolean).join('|');
-      const dateLabel = p.modifiedTime ? new Date(p.modifiedTime).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+      const caption = p.caption || '';
       return '<figure>' +
         '<img class="gallery-img" data-sources="' + escapeHtml(sources) + '" data-source-index="0" ' +
-        'src="' + escapeHtml(p.thumbUrl) + '" alt="Troop photo" loading="lazy">' +
-        (dateLabel ? '<figcaption>' + escapeHtml(dateLabel) + '</figcaption>' : '') +
+        'src="' + escapeHtml(p.thumbUrl) + '" alt="' + escapeHtml(caption || 'Troop photo') + '" loading="lazy">' +
+        (caption ? '<figcaption>' + escapeHtml(caption) + '</figcaption>' : '') +
         '</figure>';
     }).join('');
     wireFallbackChain(el, 'img.gallery-img', img => {
