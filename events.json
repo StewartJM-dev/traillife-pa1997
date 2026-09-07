@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T04:14:48.146Z",
+  "generatedAt": "2026-09-07T14:28:41.412Z",
   "calendar": "Trail Life Troop PA-1997 Events",
   "events": [
     {
@@ -30,13 +30,16 @@
       "allDay": false,
       "date": "2026-09-20",
       "endDate": "2026-09-20",
-      "startTime": "00:00",
-      "endTime": "23:59",
+      "startTime": "10:00",
+      "endTime": "19:00",
       "location": "Living Word Baptist Church, Sweet Valley, PA",
       "description": "<p>Troop PA-1997 will celebrate Trail Life Sunday. Morning service begins at 10:00 a.m.; evening service begins at 6:00 p.m. Prepare a Trail Life Connect email and Facebook invitation. QR contact: tltrooppa1997@gmail.com.</p>",
       "firstParagraph": "Troop PA-1997 will celebrate Trail Life Sunday. Morning service begins at 10:00 a.m.; evening service begins at 6:00 p.m. Prepare a Trail Life Connect email and Facebook invitation. QR contact: tltrooppa1997@gmail.com.",
-      "poster": null,
-      "updated": "2026-09-07T03:24:19.130Z"
+      "poster": {
+        "fileId": "1xSzNcd9xj4oZesyFfZvs0XHYcSaVWuBD",
+        "filename": "Trail Life Sunday - APPROVED.png"
+      },
+      "updated": "2026-09-07T13:42:34.242Z"
     },
     {
       "id": "2vp2b16gs74btcfgjn3unrln60",
@@ -180,13 +183,13 @@
       "startTime": "18:00",
       "endTime": "21:30",
       "location": "Living Word Baptist Church, Sweet Valley, PA",
-      "description": "<p>ULTIMATE MANHUNT — Find the Lost Patrol</p>\n<p>No tricks. Just adventure.\nA Better Halloween Alternative.</p>\n<p>Friday, October 30, 2026 • 6:00–9:30 p.m.\nLiving Word Baptist Church, Sweet Valley, PA</p>\n<p>Trail Life Troop PA-1997’s October outdoor-skills capstone. Finder patrols use maps, tracking signs, observation, teamwork, and limited guesses to locate hidden Navigator/Adventurer Lost Patrol sites and recover patrol markers. Lost Patrols remain concealed in assigned quadrants and compete to protect as many markers as possible.</p>\n<p>Planned features: maps, tracking, radios, camouflage, glow-stick quadrant boundaries, campfire base camp, prizes, hot dogs, trail mix, hot apple cider, and Dutch-oven apple crisp.</p>\n<p>Awards include Ultimate Search Patrol, Ultimate Lost Patrol, Ghost of the Woods, and Night Hunter.</p>\n<p>Contact: tltrooppa1997@gmail.com</p>",
-      "firstParagraph": "ULTIMATE MANHUNT — Find the Lost Patrol",
+      "description": "<p>A nighttime tracking-and-navigation challenge where Trailmen race to find hidden Lost Patrols, recover their patrol markers, and make it back to Command before time runs out.</p>\n<p>ULTIMATE MANHUNT — Find the Lost Patrol</p>\n<p>No tricks. Just adventure. A Better Halloween Alternative.</p>\n<p>Friday, October 30, 2026 • 6:00–9:30 p.m.\nLiving Word Baptist Church, Sweet Valley, PA</p>\n<p>Trail Life Troop PA-1997’s October outdoor-skills capstone. Finder patrols use maps, tracking signs, observation, teamwork, and limited guesses to locate hidden Navigator/Adventurer Lost Patrol sites and recover patrol markers. Lost Patrols remain concealed in assigned quadrants and compete to protect as many markers as possible.</p>\n<p>Planned features: maps, tracking, radios, camouflage, glow-stick quadrant boundaries, campfire base camp, prizes, hot dogs, trail mix, hot apple cider, and Dutch-oven apple crisp.</p>\n<p>Awards include Ultimate Search Patrol, Ultimate Lost Patrol, Ghost of the Woods, and Night Hunter.</p>\n<p>Contact: tltrooppa1997@gmail.com</p>",
+      "firstParagraph": "A nighttime tracking-and-navigation challenge where Trailmen race to find hidden Lost Patrols, recover their patrol markers, and make it back to Command before time runs out.",
       "poster": {
         "fileId": "1plY-j__tQ8Hb4KAgzksSdLvqUdhnzDjd",
         "filename": "Ultimate Manhunt - Find the Lost Patrol - APPROVED.png"
       },
-      "updated": "2026-09-07T03:24:30.560Z"
+      "updated": "2026-09-07T13:50:28.409Z"
     },
     {
       "id": "onlbk04qa2aj110ggn6hbt2vk8",
