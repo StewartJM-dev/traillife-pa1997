@@ -427,21 +427,22 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .passage-card .ref { font-family: var(--display); font-weight: 700; color: var(--pine); font-size: 1.05rem; }
 .passage-card .branch { color: var(--khaki); font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; margin-top: .15rem; }
 
-.passage-details { margin-bottom: 2rem; }
-.passage-details summary {
+.collapsible { margin-bottom: 2rem; }
+.collapsible summary {
   cursor: pointer;
   list-style: none;
   font-family: var(--display);
   font-weight: 700;
-  color: var(--pine);
-  background: var(--paper);
-  border-left: 6px solid var(--forest);
+  color: #fff;
+  background: var(--forest);
   padding: .8rem 1.2rem;
+  border-radius: 6px;
   font-size: 1.05rem;
 }
-.passage-details summary::-webkit-details-marker { display: none; }
-.passage-details summary::after { content: "+ Show"; float: right; color: var(--khaki); font-weight: 600; font-size: .85rem; font-family: var(--body); }
-.passage-details[open] summary::after { content: "− Hide"; }
+.collapsible summary::-webkit-details-marker { display: none; }
+.collapsible summary::after { content: "+ Show"; float: right; color: var(--gold-light); font-weight: 600; font-size: .85rem; font-family: var(--body); }
+.collapsible[open] summary { border-radius: 6px 6px 0 0; }
+.collapsible[open] summary::after { content: "− Hide"; }
 
 .practice-embed { margin-bottom: 1rem; }
 .practice-embed iframe { width: 100%; height: 80vh; min-height: 700px; border: 0; border-radius: 10px; background: #fff; display: block; }
