@@ -401,6 +401,41 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .credit-badge { display: inline-flex; align-items: center; gap: .4rem; font-weight: 600; }
 .credit-badge .mark { height: 40px; width: auto; flex-shrink: 0; }
 
+/* ---------- Scripture Challenge ---------- */
+.scripture-flow { display: flex; flex-wrap: wrap; gap: .6rem 1rem; align-items: center; justify-content: center; margin: 0 0 2rem; }
+.scripture-flow .step { background: var(--paper); border: 2px solid var(--forest); border-radius: 999px; padding: .55rem 1.2rem; font-family: var(--display); font-weight: 700; color: var(--pine); font-size: 1rem; }
+.scripture-flow .arrow { color: var(--khaki); font-size: 1.3rem; line-height: 1; }
+@media (max-width: 560px) { .scripture-flow { gap: .4rem .6rem; } .scripture-flow .step { font-size: .85rem; padding: .45rem .9rem; } }
+
+.level-picker { display: grid; grid-template-columns: repeat(5, 1fr); gap: .9rem; margin: 1.5rem 0 2.5rem; }
+@media (max-width: 700px) { .level-picker { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 420px) { .level-picker { grid-template-columns: repeat(2, 1fr); } }
+.level-btn { display: flex; flex-direction: column; align-items: center; gap: .6rem; background: var(--paper); border: 3px solid transparent; border-radius: 14px; padding: 1.1rem .6rem; cursor: pointer; font: 700 1rem var(--display); color: var(--pine); text-align: center; transition: border-color .15s, transform .15s; }
+.level-btn img { width: 60px; height: 60px; object-fit: contain; }
+.level-btn:hover { transform: translateY(-2px); }
+.level-btn[aria-pressed="true"] { border-color: var(--red); background: #fff; box-shadow: 0 4px 14px rgba(0,0,0,.1); }
+
+.scripture-detail { display: none; scroll-margin-top: 90px; }
+.scripture-detail.is-active { display: block; }
+.scripture-detail .detail-head { margin-bottom: 1.2rem; }
+.scripture-detail .detail-head .ages { font-family: var(--display); color: var(--khaki); letter-spacing: .04em; }
+.pacing-note { background: var(--paper); border-left: 6px solid var(--gold); padding: 1rem 1.2rem; margin-bottom: 1.5rem; font-size: .98rem; color: var(--ink-soft); }
+.passage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .8rem; margin-bottom: 2rem; }
+.passage-card { background: var(--paper); border-top: 4px solid var(--forest); padding: .9rem 1rem; }
+.passage-card .ref { font-family: var(--display); font-weight: 700; color: var(--pine); font-size: 1.05rem; }
+.passage-card .branch { color: var(--khaki); font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; margin-top: .15rem; }
+
+.practice-embed { margin-bottom: 1rem; }
+.practice-embed iframe { width: 100%; min-height: 480px; border: 0; border-radius: 10px; background: #fff; display: block; }
+.practice-placeholder { background: var(--paper); border: 2px dashed var(--khaki); border-radius: 10px; padding: 2.5rem 1.5rem; text-align: center; color: var(--ink-soft); font-size: 1.02rem; }
+.practice-fallback-row { margin-bottom: 2.5rem; }
+.social-link.is-disabled { opacity: .5; pointer-events: none; }
+
+.recite-box { background: var(--forest); color: #fff; padding: 1.6rem 1.8rem; border-radius: 10px; }
+.recite-box h3 { color: var(--gold-light); margin-bottom: .4rem; }
+.recite-box p { color: rgba(255,255,255,.9); margin: 0; }
+
+
 .skip { position: absolute; left: -999px; top: 0; background: var(--gold); color: var(--pine); padding: .5rem 1rem; z-index: 100; }
 .skip:focus { left: 1rem; top: 1rem; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
