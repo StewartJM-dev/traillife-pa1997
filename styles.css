@@ -422,10 +422,26 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .detail-close:hover { background: var(--pine); color: #fff; border-color: var(--pine); }
 .scripture-detail .detail-head .ages { font-family: var(--display); color: var(--khaki); letter-spacing: .04em; }
 .pacing-note { background: var(--paper); border-left: 6px solid var(--gold); padding: 1rem 1.2rem; margin-bottom: 1.5rem; font-size: .98rem; color: var(--ink-soft); }
-.passage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .8rem; margin-bottom: 2rem; }
+.passage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .8rem; margin-top: 1rem; }
 .passage-card { background: var(--paper); border-top: 4px solid var(--forest); padding: .9rem 1rem; }
 .passage-card .ref { font-family: var(--display); font-weight: 700; color: var(--pine); font-size: 1.05rem; }
 .passage-card .branch { color: var(--khaki); font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; margin-top: .15rem; }
+
+.passage-details { margin-bottom: 2rem; }
+.passage-details summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--pine);
+  background: var(--paper);
+  border-left: 6px solid var(--forest);
+  padding: .8rem 1.2rem;
+  font-size: 1.05rem;
+}
+.passage-details summary::-webkit-details-marker { display: none; }
+.passage-details summary::after { content: "+ Show"; float: right; color: var(--khaki); font-weight: 600; font-size: .85rem; font-family: var(--body); }
+.passage-details[open] summary::after { content: "− Hide"; }
 
 .practice-embed { margin-bottom: 1rem; }
 .practice-embed iframe { width: 100%; min-height: 480px; border: 0; border-radius: 10px; background: #fff; display: block; }
