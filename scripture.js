@@ -19,7 +19,7 @@ const scriptureLevels = {
       { ref: "Psalm 100:1–2", branch: "Hobbies Branch" },
       { ref: "Titus 3:3", branch: "Sports & Fitness Branch" }
     ],
-    rememberMeUrl: ""
+    rememberMeUrl: "https://web.remem.me/collections/865267022998191"
   },
   hawk: {
     label: "Hawk",
