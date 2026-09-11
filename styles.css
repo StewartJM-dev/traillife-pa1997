@@ -417,7 +417,9 @@ p { margin: 0 0 1em; max-width: 68ch; }
 
 .scripture-detail { display: none; scroll-margin-top: 90px; }
 .scripture-detail.is-active { display: block; }
-.scripture-detail .detail-head { margin-bottom: 1.2rem; }
+.scripture-detail .detail-head { margin-bottom: 1.2rem; position: relative; }
+.detail-close { position: absolute; top: 0; right: 0; background: transparent; border: 2px solid var(--khaki); color: var(--ink-soft); border-radius: 999px; padding: .4rem .9rem; font: 700 .85rem var(--body); cursor: pointer; }
+.detail-close:hover { background: var(--pine); color: #fff; border-color: var(--pine); }
 .scripture-detail .detail-head .ages { font-family: var(--display); color: var(--khaki); letter-spacing: .04em; }
 .pacing-note { background: var(--paper); border-left: 6px solid var(--gold); padding: 1rem 1.2rem; margin-bottom: 1.5rem; font-size: .98rem; color: var(--ink-soft); }
 .passage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .8rem; margin-bottom: 2rem; }
