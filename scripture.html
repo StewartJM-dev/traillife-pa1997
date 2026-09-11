@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#14291c">
+<title>Scripture Challenge — Trail Life Troop PA-1997</title>
+<meta name="description" content="PA-1997's plan for the Trail Life Scripture Memory Challenge: choose a passage, practice, memorize, then track and recite.">
+<meta property="og:title" content="Scripture Challenge — Trail Life Troop PA-1997">
+<meta property="og:description" content="PA-1997's plan for the Trail Life Scripture Memory Challenge: choose a passage, practice, memorize, then track and recite.">
+<meta property="og:image" content="https://trooppa1997.com/images/hero-banner.jpg">
+<meta property="og:url" content="https://trooppa1997.com/scripture.html">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="image_0.png">
+<link rel="icon" href="image_0.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=18">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D1VYMBSYYM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-D1VYMBSYYM');</script>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="image_7.png" alt="">
+      <span class="brand-name">Troop PA-1997<small>Trail Life USA · Sweet Valley, PA</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="scripture.html" aria-current="page">Scripture Challenge</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="contact.html#visit">Visit a meeting</a></li>
+        <li><button id="installAppBtn" class="btn btn-gold" type="button">Get the app</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-banner"><div class="wrap"><h1>Scripture Challenge</h1><p>Trail Life challenges every Trailman to memorize prescribed Scripture. Here's PA-1997's plan for making steady progress, all year long.</p></div></section>
+
+<section class="section">
+  <div class="wrap">
+    <p class="lede">PA-1997 uses the <strong>King James Version (KJV)</strong> for Scripture memorization.</p>
+
+    <div class="scripture-flow" aria-hidden="false">
+      <span class="step">Choose</span><span class="arrow">→</span>
+      <span class="step">Practice</span><span class="arrow">→</span>
+      <span class="step">Memorize</span><span class="arrow">→</span>
+      <span class="step">Track &amp; Recite</span>
+    </div>
+
+    <p>Boys choose a passage from their level, practice it primarily at home, mark their progress in Trail Life Connect, and recite completed passages to a parent, the Chaplain, or an approved troop leader according to the troop's plan.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>PA-1997's plan</h2>
+      <p>Trail Life provides the prescribed passages and the Trail Life Connect tracking system. PA-1997 is adding a reasonable local pace on top of that.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card"><h3>Every Woodlands Trail level</h3><p>Fox, Hawk, and Mountain Lion each have 7 prescribed passages. PA-1997's goal is 4 during one year at that level and the remaining 3 during the other — boys may go faster if they'd like. This pacing is a PA-1997 local plan, not a Trail Life national requirement.</p></div>
+      <div class="card red"><h3>Practice happens at home</h3><p>Leaders and the Chaplain are here to explain why the passages matter, encourage the boys, answer questions, hear recitations, verify completion, and celebrate progress — not to run a weekly classroom drill.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head"><h2>Choose your level</h2><p>Tap a level to see its passages and start practicing.</p></div>
+
+    <div class="level-picker" id="levelPicker">
+      <button type="button" class="level-btn" data-level="fox" aria-pressed="false"><img src="images/patrols/fox.png" alt=""><span>Fox</span></button>
+      <button type="button" class="level-btn" data-level="hawk" aria-pressed="false"><img src="images/patrols/hawk.png" alt=""><span>Hawk</span></button>
+      <button type="button" class="level-btn" data-level="mountainLion" aria-pressed="false"><img src="images/patrols/mountain-lion.png" alt=""><span>Mountain Lion</span></button>
+      <button type="button" class="level-btn" data-level="navigator" aria-pressed="false"><img src="images/patrols/navigator.png" alt=""><span>Navigator</span></button>
+      <button type="button" class="level-btn" data-level="adventurer" aria-pressed="false"><img src="images/patrols/adventurer.png" alt=""><span>Adventurer</span></button>
+    </div>
+
+    <div class="scripture-detail" id="scriptureDetail">
+      <div class="detail-head">
+        <div class="ages" id="detailAges"></div>
+        <h3 id="detailLevelName" style="font-size:1.8rem;margin:.1rem 0 0;"></h3>
+      </div>
+
+      <div class="pacing-note" id="pacingNote"></div>
+
+      <div class="passage-grid" id="passageGrid"></div>
+
+      <div class="practice-embed" id="practiceEmbed"></div>
+      <p class="practice-fallback-row"><a class="social-link" id="practiceFallback" href="#" target="_blank" rel="noopener">Open Scripture Practice in Remember Me</a></p>
+
+      <p class="btn-row"><a class="btn btn-red" href="https://www.traillifeconnect.com/" target="_blank" rel="noopener">Track Your Progress in Trail Life Connect</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head"><h2>Trail Life Connect</h2><p>The official record of every Trailman's progress.</p></div>
+    <div class="card-grid">
+      <div class="card"><h3>What Trail Life Connect is for</h3><p>Trailmen select the passage they're currently memorizing, update its status, and mark it complete. Troop leaders verify completion there. It remains the one official record — PA-1997 isn't keeping a separate tracking system.</p><p><a class="more" href="https://www.traillifeconnect.com/" target="_blank" rel="noopener">Go to Trail Life Connect</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="recite-box">
+      <h3>Think you've got it? Come ready to recite it!</h3>
+      <p>When a Trailman believes he's memorized a passage, a parent, the Chaplain, or an approved troop leader can hear his recitation according to the troop's plan. Once verified, leaders confirm it complete in Trail Life Connect.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <h3>Trail Life Troop PA-1997</h3>
+      <p>Chartered June 7, 2024 at Living Word Baptist Church. A Christ-centered outdoor adventure program for boys and young men, ages 5–17.</p>
+      <p><a class="social-link" href="https://www.facebook.com/share/g/19nwSQXx7a/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8.2h2.75l.41-3.2h-3.16V7.63c0-.93.26-1.56 1.6-1.56h1.7V3.2A22.7 22.7 0 0 0 14.1 3c-2.6 0-4.38 1.58-4.38 4.49v2.11H7v3.2h2.72V21h3.78Z"/></svg>Follow us on Facebook</a></p>
+      <p><a class="social-link instagram-link" href="https://instagram.com/tltrooppa1997" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.16.55.55.9 1.11 1.16 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.11 0 2.72-.01 3.06-.06 4.12-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.16 1.77 4.9 4.9 0 0 1-1.77 1.16c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06-2.71 0-3.05-.01-4.11-.06-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.16 4.9 4.9 0 0 1-1.16-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12c0-2.71.01-3.05.06-4.11.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.16-1.77a4.9 4.9 0 0 1 1.77-1.16c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm0 1.8c-2.67 0-2.99.01-4.04.06-.87.04-1.34.18-1.65.3-.42.16-.71.36-1.02.67-.31.31-.5.6-.67 1.02-.12.31-.26.78-.3 1.65C4.27 8.5 4.26 8.82 4.26 12s.01 3.5.06 4.5c.04.87.18 1.34.3 1.65.16.42.36.71.67 1.02.31.31.6.5 1.02.67.31.12.78.26 1.65.3 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.87-.04 1.34-.18 1.65-.3.42-.16.71-.36 1.02-.67.31-.31.5-.6.67-1.02.12-.31.26-.78.3-1.65.05-1 .06-1.32.06-4.5s-.01-3.5-.06-4.5c-.04-.87-.18-1.34-.3-1.65-.16-.42-.36-.71-.67-1.02a2.7 2.7 0 0 0-1.02-.67c-.31-.12-.78-.26-1.65-.3C14.99 3.81 14.67 3.8 12 3.8Zm0 3.05a5.15 5.15 0 1 1 0 10.3 5.15 5.15 0 0 1 0-10.3Zm0 1.8a3.35 3.35 0 1 0 0 6.7 3.35 3.35 0 0 0 0-6.7Zm5.36-1.98a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z"/></svg>Follow us on Instagram</a></p>
+    </div>
+    <div>
+      <h3>Meetings</h3>
+      <p>Every Tuesday, 6:00–7:30 PM<br>Living Word Baptist Church<br>40 Hess Lane, Sweet Valley, PA 18656</p>
+      <p><a href="https://maps.google.com/?q=40+Hess+Lane,+Sweet+Valley,+PA" target="_blank" rel="noopener">Directions</a></p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <ul>
+        <li><a href="tel:570-316-7600">570-316-7600</a> (call or text)</li>
+        <li><a href="mailto:TLtroopPA1997@gmail.com">TLtroopPA1997@gmail.com</a></li>
+        <li><a href="https://www.traillifeusa.com/find-a-troop/" target="_blank" rel="noopener">Register with Trail Life USA</a></li>
+        <li><a href="https://www.lwbcsv.com" target="_blank" rel="noopener">Living Word Baptist Church</a></li>
+      </ul>
+    </div>
+    <div class="fine">&copy; 2026 Trail Life Troop PA-1997. Trail Life USA and Walk Worthy are trademarks of Trail Life USA.<br class="fine-break">Site built and maintained by <a class="credit-badge" href="https://covenantcreationanddesign.com" target="_blank" rel="noopener"><img class="mark" src="images/ccd-mark.png" alt="" aria-hidden="true">Covenant Creation &amp; Design</a>.</div>
+  </div>
+</footer>
+<script src="script.js?v=13"></script>
+<script src="scripture.js?v=1"></script>
+</body>
+</html>
