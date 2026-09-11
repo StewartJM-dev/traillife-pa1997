@@ -145,4 +145,15 @@ const scriptureLevels = {
   picker.querySelectorAll(".level-btn").forEach(btn => {
     btn.addEventListener("click", () => renderLevel(btn.dataset.level));
   });
+
+  const closeBtn = document.getElementById("detailClose");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      detail.classList.remove("is-active");
+      picker.querySelectorAll(".level-btn").forEach(btn => btn.setAttribute("aria-pressed", "false"));
+      // Drop the iframe so a paused/playing embed doesn't keep running hidden
+      embedWrap.innerHTML = "";
+      picker.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
 })();
