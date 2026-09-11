@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T14:28:41.412Z",
+  "generatedAt": "2026-09-11T23:09:38.234Z",
   "calendar": "Trail Life Troop PA-1997 Events",
   "events": [
     {
@@ -778,6 +778,24 @@
       "firstParagraph": "Woodlands Trail: Outdoor Skills — Summer safety review\nNavigators & Adventurers: Navigators: Camping application | Adventurers: Outdoor Life application",
       "poster": null,
       "updated": "2026-09-02T01:27:06.587Z"
+    },
+    {
+      "id": "evk5m8ked8ltg080kbmpm378kc",
+      "title": "PA-1997 Meeting | Outdoor Skills — Camping skills review",
+      "displayTitle": "Outdoor Skills — Camping skills review",
+      "isMeeting": true,
+      "tentative": false,
+      "cancelled": false,
+      "allDay": false,
+      "date": "2027-06-08",
+      "endDate": "2027-06-08",
+      "startTime": "18:00",
+      "endTime": "19:30",
+      "location": "Living Word Baptist Church, Sweet Valley, PA",
+      "description": "<p>Woodlands Trail: Outdoor Skills — Camping skills review\nNavigators &amp; Adventurers: Navigators: Camping application | Adventurers: Outdoor Life application</p>",
+      "firstParagraph": "Woodlands Trail: Outdoor Skills — Camping skills review\nNavigators & Adventurers: Navigators: Camping application | Adventurers: Outdoor Life application",
+      "poster": null,
+      "updated": "2026-09-02T01:27:12.441Z"
     }
   ]
 }
