@@ -35,7 +35,7 @@ const scriptureLevels = {
       { ref: "Psalm 100:1–3", branch: "Hobbies Branch" },
       { ref: "Titus 3:3–6", branch: "Sports & Fitness Branch" }
     ],
-    rememberMeUrl: ""
+    rememberMeUrl: "https://web.remem.me/collections/865621753582937"
   },
   mountainLion: {
     label: "Mountain Lion",
@@ -51,7 +51,7 @@ const scriptureLevels = {
       { ref: "Psalm 100:1–5", branch: "Hobbies Branch" },
       { ref: "Titus 3:3–8", branch: "Sports & Fitness Branch" }
     ],
-    rememberMeUrl: ""
+    rememberMeUrl: "https://web.remem.me/collections/865624709875041"
   },
   navigator: {
     label: "Navigator",
@@ -69,7 +69,7 @@ const scriptureLevels = {
       { ref: "Psalm 1:1–6", branch: "Woods Tools" },
       { ref: "Revelation 5:9–14", branch: "Our Flag" }
     ],
-    rememberMeUrl: ""
+    rememberMeUrl: "https://web.remem.me/collections/865630826702185"
   },
   adventurer: {
     label: "Adventurer",
@@ -84,7 +84,7 @@ const scriptureLevels = {
       { ref: "Luke 12:35–40", branch: "Emergency Preparedness" },
       { ref: "Matthew 25:14–30", branch: "Personal Resources" }
     ],
-    rememberMeUrl: ""
+    rememberMeUrl: "https://web.remem.me/collections/865633215595891"
   }
 };
 
