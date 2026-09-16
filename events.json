@@ -1,25 +1,7 @@
 {
-  "generatedAt": "2026-09-11T23:09:38.234Z",
+  "generatedAt": "2026-09-16T01:18:05.695Z",
   "calendar": "Trail Life Troop PA-1997 Events",
   "events": [
-    {
-      "id": "lt7n2kh8qaoa5196heo8mg9mfo",
-      "title": "PA-1997 Meeting | Science & Technology — Core #2: Science in Weather",
-      "displayTitle": "Science & Technology — Core #2: Science in Weather",
-      "isMeeting": true,
-      "tentative": false,
-      "cancelled": false,
-      "allDay": false,
-      "date": "2026-09-15",
-      "endDate": "2026-09-15",
-      "startTime": "18:00",
-      "endTime": "19:30",
-      "location": "Living Word Baptist Church, Sweet Valley, PA",
-      "description": "<p>Woodlands Trail: Science &amp; Technology — Core #2: Science in Weather\nNavigators &amp; Adventurers: Model Rocketry Badge</p>",
-      "firstParagraph": "Woodlands Trail: Science & Technology — Core #2: Science in Weather\nNavigators & Adventurers: Model Rocketry Badge",
-      "poster": null,
-      "updated": "2026-09-07T03:23:36.845Z"
-    },
     {
       "id": "i2uc1jv3lgaud405jpmd9lotu4",
       "title": "PA-1997 | Trail Life Sunday",
