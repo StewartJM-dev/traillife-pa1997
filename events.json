@@ -1,28 +1,7 @@
 {
-  "generatedAt": "2026-09-18T23:38:32.041Z",
+  "generatedAt": "2026-09-21T00:26:19.972Z",
   "calendar": "Trail Life Troop PA-1997 Events",
   "events": [
-    {
-      "id": "i2uc1jv3lgaud405jpmd9lotu4",
-      "title": "PA-1997 | Trail Life Sunday",
-      "displayTitle": "Trail Life Sunday",
-      "isMeeting": false,
-      "tentative": false,
-      "cancelled": false,
-      "allDay": false,
-      "date": "2026-09-20",
-      "endDate": "2026-09-20",
-      "startTime": "10:00",
-      "endTime": "19:00",
-      "location": "Living Word Baptist Church, Sweet Valley, PA",
-      "description": "<p>Troop PA-1997 will celebrate Trail Life Sunday. Morning service begins at 10:00 a.m.; evening service begins at 6:00 p.m. Prepare a Trail Life Connect email and Facebook invitation. QR contact: tltrooppa1997@gmail.com.</p>",
-      "firstParagraph": "Troop PA-1997 will celebrate Trail Life Sunday. Morning service begins at 10:00 a.m.; evening service begins at 6:00 p.m. Prepare a Trail Life Connect email and Facebook invitation. QR contact: tltrooppa1997@gmail.com.",
-      "poster": {
-        "fileId": "1xSzNcd9xj4oZesyFfZvs0XHYcSaVWuBD",
-        "filename": "Trail Life Sunday - APPROVED.png"
-      },
-      "updated": "2026-09-07T13:42:34.242Z"
-    },
     {
       "id": "2vp2b16gs74btcfgjn3unrln60",
       "title": "PA-1997 Meeting | Science & Technology — Core #3: Simple Tools & Machines",
