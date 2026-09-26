@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T00:20:16.628Z",
+  "generatedAt": "2026-09-26T00:07:41.319Z",
   "calendar": "Trail Life Troop PA-1997 Events",
   "events": [
     {
@@ -757,6 +757,24 @@
       "firstParagraph": "Woodlands Trail: Values — Serve in Love service project\nNavigators & Adventurers: Navigators: Camping application | Adventurers: Outdoor Life application",
       "poster": null,
       "updated": "2026-09-02T01:27:18.096Z"
+    },
+    {
+      "id": "a6pjqm40kdmmg2tt0iqagqm9rs",
+      "title": "PA-1997 Meeting | Annual planning / Troop Dream Session",
+      "displayTitle": "Annual planning / Troop Dream Session",
+      "isMeeting": true,
+      "tentative": false,
+      "cancelled": false,
+      "allDay": false,
+      "date": "2027-06-22",
+      "endDate": "2027-06-22",
+      "startTime": "18:00",
+      "endTime": "19:30",
+      "location": "Living Word Baptist Church, Sweet Valley, PA",
+      "description": "<p>Woodlands Trail: Annual planning / Troop Dream Session\nNavigators &amp; Adventurers: Navigators: Camping application | Adventurers: Outdoor Life application</p>",
+      "firstParagraph": "Woodlands Trail: Annual planning / Troop Dream Session\nNavigators & Adventurers: Navigators: Camping application | Adventurers: Outdoor Life application",
+      "poster": null,
+      "updated": "2026-09-02T01:27:23.121Z"
     }
   ]
 }
