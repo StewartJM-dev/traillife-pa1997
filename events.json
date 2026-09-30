@@ -1,25 +1,7 @@
 {
-  "generatedAt": "2026-09-26T00:07:41.319Z",
+  "generatedAt": "2026-09-30T00:43:08.795Z",
   "calendar": "Trail Life Troop PA-1997 Events",
   "events": [
-    {
-      "id": "cib627b803qrv2bqumfeqrar8g",
-      "title": "PA-1997 Meeting | Science & Technology — Elective #5: Rocketry",
-      "displayTitle": "Science & Technology — Elective #5: Rocketry",
-      "isMeeting": true,
-      "tentative": false,
-      "cancelled": false,
-      "allDay": false,
-      "date": "2026-09-29",
-      "endDate": "2026-09-29",
-      "startTime": "18:00",
-      "endTime": "19:30",
-      "location": "Living Word Baptist Church, Sweet Valley, PA",
-      "description": "<p>Woodlands Trail: Science &amp; Technology — Elective #5: Rocketry\nNavigators &amp; Adventurers: Model Rocketry Badge</p>\n<p>Special: Steph will introduce herself and launch the first fundraiser (meat sticks) for membership-renewal funding.</p>",
-      "firstParagraph": "Woodlands Trail: Science & Technology — Elective #5: Rocketry\nNavigators & Adventurers: Model Rocketry Badge",
-      "poster": null,
-      "updated": "2026-09-07T03:23:49.043Z"
-    },
     {
       "id": "srs681m832m482sq5jc35eqaj4",
       "title": "PA-1997 Rocket Launch Hit the Trail",
