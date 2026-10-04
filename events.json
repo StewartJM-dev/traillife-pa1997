@@ -1,28 +1,7 @@
 {
-  "generatedAt": "2026-10-01T04:47:23.530Z",
+  "generatedAt": "2026-10-04T06:15:53.041Z",
   "calendar": "Trail Life Troop PA-1997 Events",
   "events": [
-    {
-      "id": "srs681m832m482sq5jc35eqaj4",
-      "title": "PA-1997 Rocket Launch Hit the Trail",
-      "displayTitle": "PA-1997 Rocket Launch Hit the Trail",
-      "isMeeting": false,
-      "tentative": true,
-      "cancelled": false,
-      "allDay": false,
-      "date": "2026-10-03",
-      "endDate": "2026-10-03",
-      "startTime": "00:00",
-      "endTime": "23:59",
-      "location": "Living Word Baptist Church, 40 Hess Lane, Sweet Valley, PA 18656",
-      "description": "<p>Tentative date: Saturday, October 3, 2026. Joint Woodlands Trail, Navigators and Adventurers rocket launch day at Living Word Baptist Church. Woodlands: Science &amp; Technology Hit the Trail. Navigators/Adventurers: Model Rocketry Badge application. Time and rain plan TBD.</p>",
-      "firstParagraph": "Tentative date: Saturday, October 3, 2026. Joint Woodlands Trail, Navigators and Adventurers rocket launch day at Living Word Baptist Church. Woodlands: Science & Technology Hit the Trail. Navigators/Adventurers: Model R",
-      "poster": {
-        "fileId": "1Y3AJOEvl6kbBOzjgQHQJUOAMohfFM358",
-        "filename": "Rocket Launch Hit the Trail - APPROVED.png"
-      },
-      "updated": "2026-09-07T03:54:10.196Z"
-    },
     {
       "id": "pqp71jq8hnrc0pp1ggj6le4mo4",
       "title": "PA-1997 Meeting | Outdoor Skills — Core #1: Ropes & Knots",
