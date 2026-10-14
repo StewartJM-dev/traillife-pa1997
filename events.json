@@ -1,25 +1,7 @@
 {
-  "generatedAt": "2026-10-07T02:39:39.355Z",
+  "generatedAt": "2026-10-14T01:56:10.023Z",
   "calendar": "Trail Life Troop PA-1997 Events",
   "events": [
-    {
-      "id": "r4jcjdb83hrf7veh6hvlqbvj40",
-      "title": "PA-1997 Meeting | Outdoor Skills — Core #2: Orienteering",
-      "displayTitle": "Outdoor Skills — Core #2: Orienteering",
-      "isMeeting": true,
-      "tentative": false,
-      "cancelled": false,
-      "allDay": false,
-      "date": "2026-10-13",
-      "endDate": "2026-10-13",
-      "startTime": "18:00",
-      "endTime": "19:30",
-      "location": "Living Word Baptist Church, Sweet Valley, PA",
-      "description": "<p>Woodlands Trail: Outdoor Skills — Core #2: Orienteering\nNavigators &amp; Adventurers: Trail Skills Badge</p>",
-      "firstParagraph": "Woodlands Trail: Outdoor Skills — Core #2: Orienteering\nNavigators & Adventurers: Trail Skills Badge",
-      "poster": null,
-      "updated": "2026-09-07T03:24:00.520Z"
-    },
     {
       "id": "r8ntlfqvieii8gglrm1cdamkho",
       "title": "PA-1997 Meeting | Outdoor Skills — Core #4: Camping & Hiking",
