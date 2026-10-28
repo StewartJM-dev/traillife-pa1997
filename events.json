@@ -1,25 +1,7 @@
 {
-  "generatedAt": "2026-10-21T01:02:39.652Z",
+  "generatedAt": "2026-10-28T01:47:22.611Z",
   "calendar": "Trail Life Troop PA-1997 Events",
   "events": [
-    {
-      "id": "0ee9hcptpjamh8lamk57rt5qu8",
-      "title": "PA-1997 Meeting | Outdoor Skills — Elective #9: Tracking",
-      "displayTitle": "Outdoor Skills — Elective #9: Tracking",
-      "isMeeting": true,
-      "tentative": false,
-      "cancelled": false,
-      "allDay": false,
-      "date": "2026-10-27",
-      "endDate": "2026-10-27",
-      "startTime": "18:00",
-      "endTime": "19:30",
-      "location": "Living Word Baptist Church, Sweet Valley, PA",
-      "description": "<p>Woodlands Trail: Outdoor Skills — Elective #9: Tracking\nNavigators &amp; Adventurers: Trail Skills Badge</p>",
-      "firstParagraph": "Woodlands Trail: Outdoor Skills — Elective #9: Tracking\nNavigators & Adventurers: Trail Skills Badge",
-      "poster": null,
-      "updated": "2026-09-07T03:24:12.668Z"
-    },
     {
       "id": "tvh5s8jm570s2fhradi0lev3ng",
       "title": "PA-1997 | Ultimate Manhunt",
