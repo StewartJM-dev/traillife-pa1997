@@ -1,25 +1,7 @@
 {
-  "generatedAt": "2026-11-04T02:39:39.225Z",
+  "generatedAt": "2026-11-11T01:30:09.574Z",
   "calendar": "Trail Life Troop PA-1997 Events",
   "events": [
-    {
-      "id": "kl0tion8jvm35bkkbcvpruagkc",
-      "title": "PA-1997 Meeting | Heritage — Step #8: Armed Forces",
-      "displayTitle": "Heritage — Step #8: Armed Forces",
-      "isMeeting": true,
-      "tentative": false,
-      "cancelled": false,
-      "allDay": false,
-      "date": "2026-11-10",
-      "endDate": "2026-11-10",
-      "startTime": "17:00",
-      "endTime": "18:30",
-      "location": "Living Word Baptist Church, Sweet Valley, PA",
-      "description": "<p>Woodlands Trail: Heritage — Step #8: Armed Forces\nNavigators &amp; Adventurers: Our Flag Badge</p>",
-      "firstParagraph": "Woodlands Trail: Heritage — Step #8: Armed Forces\nNavigators & Adventurers: Our Flag Badge",
-      "poster": null,
-      "updated": "2026-09-02T01:24:49.269Z"
-    },
     {
       "id": "53c5chs79blkher2ufmlu0h0gs",
       "title": "PA-1997 | Veterans Breakfast",
