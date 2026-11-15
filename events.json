@@ -1,28 +1,7 @@
 {
-  "generatedAt": "2026-11-11T01:30:09.574Z",
+  "generatedAt": "2026-11-15T07:03:18.954Z",
   "calendar": "Trail Life Troop PA-1997 Events",
   "events": [
-    {
-      "id": "53c5chs79blkher2ufmlu0h0gs",
-      "title": "PA-1997 | Veterans Breakfast",
-      "displayTitle": "Veterans Breakfast",
-      "isMeeting": false,
-      "tentative": false,
-      "cancelled": false,
-      "allDay": false,
-      "date": "2026-11-14",
-      "endDate": "2026-11-14",
-      "startTime": "00:00",
-      "endTime": "23:59",
-      "location": "Living Word Baptist Church, Sweet Valley, PA",
-      "description": "<p>Troop reports at 7:30 a.m.; breakfast begins at 9:00 a.m. Invite veterans and\ntheir families from Living Word Baptist Church and Stillwater Christian Church\nand through Facebook. RSVP deadline: November 7. Follow up with Brandon, DSA\nfor the Klondike host troop, and invite their troop. RSVP/contact:\ntltrooppa1997@gmail.com. Final dismissal time TBD.</p>\n<p>Hit the Trail</p>",
-      "firstParagraph": "Troop reports at 7:30 a.m.; breakfast begins at 9:00 a.m. Invite veterans and\ntheir families from Living Word Baptist Church and Stillwater Christian Church\nand through Facebook. RSVP deadline: November 7. Follow up with",
-      "poster": {
-        "fileId": "1kqBkhTlW2yXsjj-_jCV0mnp8QPOj1EnW",
-        "filename": "Trail Life Veterans Meal Poster.png"
-      },
-      "updated": "2026-10-01T03:48:00.056Z"
-    },
     {
       "id": "tbc5q4o27in32870ldl2lhkjao",
       "title": "PA-1997 Meeting | Heritage — Core #5: My Community",
